@@ -1,0 +1,40 @@
+@import "./custom/theme.scss";
+@import "./custom/radio-buttons.scss";
+@import "./custom/checkbox.scss";
+@import "./custom/image-upload.scss";
+
+// ======================================================
+
+.c-header.c-header-fixed{
+    top:0px;
+}
+
+.click-file{
+    cursor:pointer;
+}
+  
+.table {
+    table-layout: fixed;
+}
+
+.table-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    color: #bbbbbb !important;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+div[data-name="editor"] {
+    height: 375px;
+}
+
+tr[data-name="tableRow"] {
+    cursor: pointer;
+}
