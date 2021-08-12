@@ -1,8 +1,8 @@
 <table @class(['table-hover' => $objects->isNotEmpty(), 'table table-responsive-sm table-bordered border-top-0 mb-0'])>
     <thead>
     <tr>
-        @foreach ($theaders as $theader)
-            <th class="border-bottom-0 align-middle">@lang($theader)</th>
+        @foreach ($columns as $column)
+            <th class="border-bottom-0 align-middle">@lang($column)</th>
         @endforeach
         <th class="border-bottom-0 align-middle">@lang('buttons.default')</th>
     </tr>
