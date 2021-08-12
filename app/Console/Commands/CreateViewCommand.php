@@ -112,6 +112,13 @@ class CreateViewCommand extends GeneratorCommand
     protected function createRequests($model)
     {
         $dir_path = ucfirst($model);
+        if (str_contains($model, '\\')) {
+            $exploded = explode('\\', $model);
+            $except_last = array_slice($exploded, 0, -1);
+            $ucfirsted = array_map(fn($item) => ucfirst($item), $except_last);
+            $dir_path = implode('\\', $ucfirsted). '\\';
+            $model = end($exploded);
+        }
         $name = ucfirst($model);
 
         $requests = [
@@ -125,17 +132,8 @@ class CreateViewCommand extends GeneratorCommand
             ]
         ];
 
-        if (str_contains($model, '\\')) {
-            $exploded = explode('\\', $model);
-            $except_last = array_slice($exploded, 0, -1);
-            $ucfirsted = array_map(fn($item) => ucfirst($item), $except_last);
-            $dir_path = implode('\\', $ucfirsted). '\\';
-            $model = end($exploded);
-        }
-
         foreach($requests as $request) {
             $path = "app\\Http\\Requests\\{$dir_path}{$request['filename']}";
-            dd($path);
             if (!File::exists($path)) {
                 $content = File::get($request['content']);
                 File::put($path, $content);
