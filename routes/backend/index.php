@@ -11,3 +11,4 @@ Route::resource('/homepage/slider', 'HomepageSliderController', ['names' => 'hom
 Route::resource('/homepage/about', 'HomepageAboutController', ['names' => 'homepage.about']);
 Route::resource('/member', 'MemberController');
 Route::resource('/about', 'AboutController');
+Route::resource('/delivery', 'DeliveryController');
