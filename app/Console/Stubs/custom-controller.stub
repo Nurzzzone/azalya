@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace {{namespace}};
 
-use App\Models\Member;
+use App\Models\{{model}};
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Member\CreateMemberRequest;
 
-class MemberController extends Controller
+class {{class}} extends Controller
 {
     use HasFlashMessage;
 
-    protected const MODEL = Member::class;
+    protected const MODEL = {{model}}::class;
     protected const COLUMNS = ['id', 'fullname', 'position'];
     protected $route;
     protected $object;
 
     public function __construct()
     {
-        $this->route = 'member';
-        $this->object = 'member';
+        $this->route = '{{route}}';
+        $this->object = '{{object}}';
     }
 
     /**
@@ -46,10 +46,10 @@ class MemberController extends Controller
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param  {{createRequest}}  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateMemberRequest $request)
+    public function store({{createRequest}} $request)
     {
         try {
             (self::MODEL)::create($request->validated());
@@ -60,32 +60,32 @@ class MemberController extends Controller
     }
 
     /**
-     * @param  Category $category
+     * @param  {{model}} ${{object}}
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show({{model}} ${{object}})
     {
         return view("backend.pages.{$this->route}.show", compact($this->object));
     }
 
     /**
-     * @param  Member $member
+     * @param  {{model}} ${{object}}
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit({{model}} ${{object}})
     {
         return view("backend.pages.{$this->route}.edit", compact($this->object));
     }
 
     /**
-     * @param  UpdateCategoryRequest $request
-     * @param  Member $member
+     * @param  {{updateRequest}} $request
+     * @param  {{model}} ${{object}}
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateMemberRequest $request, Member $member)
+    public function update({{updateRequest}} $request, {{model}} ${{object}})
     {
         try {
-            $member->update($request->validated());
+            ${{object}}->update($request->validated());
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
@@ -93,13 +93,13 @@ class MemberController extends Controller
     }
 
     /**
-     * @param  Member $member
+     * @param  {{model}} ${{object}}
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Member $member, Request $request)
+    public function destroy({{model}} ${{object}}, Request $request)
     {
         try {
-            $member->delete();
+            ${{object}}->delete();
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
