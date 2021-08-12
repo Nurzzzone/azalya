@@ -2,20 +2,25 @@
 
 @section('title', trans('pages.pages'))
 
+@php($objects = $member)
+@php($route = 'member')
+
 @section('content')
     <div class="container-fluid">
         <div class="animated fadeIn">
+            @include('backend.pages.partials.flash-message')
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-end">
-                            <a class="btn btn-success" href="{{ route('backend.members.create') }}">@lang('buttons.create')</a>
+                            <a class="btn btn-success" href="{{ route("backend.$route.create") }}">@lang('buttons.create')</a>
                         </div>
                         <div class="card-body">
-                            @include('backend.pages.members.__table')
-                            @include('backend.pages.partials.modal', ['url' => '/admin/members/'])
+                            @include("backend.pages.$route.__table")
+                            @php($url = str_contains($route, '.')? str_replace('.', '/', $route): $route)
+                            @include('backend.pages.partials.modal', ['url' => "/admin/$url/"])
                         </div>
-                        <div class="card-footer">{{ $members->links('backend.shared.pagination', ['paginator' => $members]) }}</div>
+                        <div class="card-footer">{{ $objects->links('backend.shared.pagination', ['paginator' => $objects]) }}</div>
                     </div>
                 </div>
             </div>

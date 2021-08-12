@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Member;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
@@ -46,7 +45,7 @@ class MemberController extends Controller
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CreateMemberRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateMemberRequest $request)
@@ -60,10 +59,10 @@ class MemberController extends Controller
     }
 
     /**
-     * @param  Category $category
+     * @param  Member $member
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Member $member)
     {
         return view("backend.pages.{$this->route}.show", compact($this->object));
     }
