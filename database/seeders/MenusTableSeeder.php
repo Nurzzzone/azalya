@@ -148,7 +148,8 @@ class MenusTableSeeder extends Seeder
         $this->insertLink('admin', 'products.about', '/admin/products/about', 'cil-speedometer');
         $this->insertLink('admin', 'member', '/admin/member', 'cil-speedometer');
         $this->insertLink('admin', 'about', '/admin/about', 'cil-speedometer');
-        $this->insertLink('admin', 'about', '/admin/delivery', 'cil-speedometer');
+        $this->insertLink('admin', 'delivery', '/admin/delivery', 'cil-speedometer');
+        $this->insertLink('admin', 'contacts', '/admin/contacts', 'cil-speedometer');
 
         $this->beginDropdown('admin', 'settings', 'cil-calculator');
             $this->insertLink('admin', 'users',                   '/users');

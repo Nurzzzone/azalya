@@ -132,7 +132,7 @@ class CreateViewCommand extends GeneratorCommand
 
         foreach($requests as $request) {
             if (!File::exists($request['namespace'] . $request['filename'])) {
-                $this->replaceReference($request['content'], $replacements, [$request['class'], $request['namespace']], "$dir_path \\ {$request['filename']}");
+                $this->replaceReference($request['content'], $replacements, [$request['class'], $request['namespace']], "$dir_path\\{$request['filename']}");
             }
             $this->line("{$request['filename']} is already exists!");
         }
