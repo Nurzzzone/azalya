@@ -10,3 +10,4 @@ Route::resource('/size', 'SizesController');
 Route::resource('/homepage/slider', 'HomepageSliderController', ['names' => 'homepage.slider']);
 Route::resource('/homepage/about', 'HomepageAboutController', ['names' => 'homepage.about']);
 Route::resource('/member', 'MemberController');
+Route::resource('/about', 'AboutController');
