@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\About\CreateAboutRequest;
-use App\Http\Requests\Member\CreateMemberRequest;
-use App\Http\Requests\Product\UpdateAboutRequest;
+use App\Http\Requests\About\UpdateAboutRequest;
 
 class AboutController extends Controller
 {
