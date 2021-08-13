@@ -19,7 +19,7 @@ trait HasJsonResponse
             return response()->json(array_merge($default, $data));
         }
         return response()->json([
-            'message'   => $message ?? 'success',
+            'message'   => $message ?? 'Операция прошла успешно!',
             'status'    => $status ?? 200,
         ]);
     }
@@ -29,11 +29,11 @@ trait HasJsonResponse
      * @param $error
      * @return \Illuminate\Http\JsonResponse
      */
-    public function sendErrorMessage(string $message, int $status)
+    public function sendErrorMessage(string $message = null, int $status = null)
     {
         return response()->json([
-            'message'   => $message,
-            'status'    => $status,
+            'message'   => $message ?? 'Произошла ошибка! Пожалуйста, попробуйте еще раз',
+            'status'    => $status ?? 500,
         ])->setStatusCode($status);
     }
 

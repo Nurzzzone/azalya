@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\User;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductCollection;
+use App\Traits\HasJsonResponse;
 
 class ProductsController extends Controller
 {
+    use HasJsonResponse;
+
     protected const MODEL = Product::class;
 
     /**
@@ -18,5 +23,15 @@ class ProductsController extends Controller
         return (new ProductCollection((self::MODEL)::where('is_active', true)->paginate(9)))
             ->response()
             ->setEncodingOptions(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    }
+
+    public function toggleFavorite(Product $product, Request $request)
+    {
+        try {
+            User::authenticated($request)->toggleFavorite($product);
+        } catch (\Throwable $th) {
+            return $this->sendErrorMessage();
+        }
+        return $this->sendSuccessMessage();
     }
 }

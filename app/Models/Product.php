@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
     use HasFactory;
+    use Favoriteable;
 
     protected $fillable = [
         'name',
@@ -43,5 +45,10 @@ class Product extends Model
     public function sizes()
     {
         return $this->belongsToMany(Size::class, 'products_has_sizes');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_has_favourite_products');
     }
 }

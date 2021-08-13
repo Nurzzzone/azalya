@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
 
 class User extends Authenticatable
 {
@@ -15,6 +15,7 @@ class User extends Authenticatable
     use SoftDeletes;
     use HasRoles;
     use HasFactory;
+    use Favoriteability;
     
     protected $table = 'users';
 
@@ -53,8 +54,20 @@ class User extends Authenticatable
         'menuroles' => 'user',
     ];
 
+    public function scopeAuthenticated($query, $request)
+    {
+        return $query->where('email', $request['email'] ?? null)
+            ->orWhere('phone_number', $request['phone_number'] ?? null)
+            ->first();
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function favourites()
+    {
+        return $this->belongsToMany(Product::class, 'user_has_favourite_products');
     }
 }
