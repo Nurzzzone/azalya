@@ -42,6 +42,7 @@ class CreateViewCommand extends GeneratorCommand
                 $content = File::get($stubs[$resource['name']]);
                 File::put($filepath, $content);
             }
+            $this->info("{$resource['file_name']} for $model created!");
         }
 
         # ========================================== #
@@ -134,7 +135,7 @@ class CreateViewCommand extends GeneratorCommand
             if (!File::exists($request['namespace'] . $request['filename'])) {
                 $this->replaceReference($request['content'], $replacements, [$request['class'], $request['namespace']], "$dir_path\\{$request['filename']}");
             }
-            $this->line("{$request['filename']} is already exists!");
+            $this->info("{$request['filename']} created!");
         }
         return $requests;
     }
