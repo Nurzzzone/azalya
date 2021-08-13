@@ -20,6 +20,8 @@ class UsersAndNotesSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
+
         /* Create roles */
         $adminRole = Role::create(['name' => 'admin']);
         RoleHierarchy::create([
@@ -40,11 +42,13 @@ class UsersAndNotesSeeder extends Seeder
         /*  insert users   */
         $user = User::create([
             'name' => 'admin',
+            'phone_number' => $faker->phoneNumber,
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'remember_token' => Str::random(10),
-            'menuroles' => 'user,admin'
+            'menuroles' => 'user,admin',
+            'address' => $faker->address
         ]);
         $user->assignRole('admin');
         $user->assignRole('user');
