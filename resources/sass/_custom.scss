@@ -38,3 +38,21 @@ div[data-name="editor"] {
 tr[data-name="tableRow"] {
     cursor: pointer;
 }
+
+textarea{ 
+    height:375px; 
+    min-height:375px;  
+    max-height:375px;
+    resize: none;
+}
+
+.form-control:focus {
+    border-color: none;
+    box-shadow: none;
+}
+
+.backend__map {
+    iframe {
+        width: 100%;
+    }
+}

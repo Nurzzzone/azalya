@@ -12,7 +12,7 @@
 </tr>
 @else 
     <tr>
-        <th class="align-middle">@lang($locale)</th>
+        <th class="align-start">@lang($locale)</th>
         <td class="{{ $data !== null? '': 'text-muted' }}">{!! $data ?? trans('messages.data.unavailable') !!}</td>
     </tr>
 @endif

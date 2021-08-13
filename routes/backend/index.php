@@ -13,3 +13,5 @@ Route::resource('/member', 'MemberController');
 Route::resource('/about', 'AboutController');
 Route::resource('/delivery', 'DeliveryController');
 Route::resource('/contacts', 'ContactsController', ['parameters' => ['contacts' => 'contacts']]);
+Route::resource('/map', 'MapController', ['except' => ['index', 'show']]);
+Route::get('/map', 'MapController@show')->name('map.show');
