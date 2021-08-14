@@ -18,7 +18,6 @@ class CreateProductAboutTable extends Migration
             $table->string('name', 255);
             $table->string('image', 255)->nullable();
             $table->text('description');
-            $table->boolean('is_active');
             $table->timestamps();
         });
     }

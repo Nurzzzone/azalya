@@ -25,7 +25,6 @@
                             </table>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-success" href="{{ route("backend.$route.index") }}">@lang('buttons.back')</a>
                             <a class="btn btn-success" href="{{ route("backend.$route.edit", $object->id) }}">@lang('buttons.edit')</a>
                         </div>
                     </div>

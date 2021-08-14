@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Product;
 
-use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateAboutRequest extends FormRequest
@@ -24,18 +23,6 @@ class UpdateAboutRequest extends FormRequest
             'name' => ['sometimes', 'string', 'max:255'],
             'description' => ['sometimes', 'string', 'max:16000'],
             'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg'],
-            'is_active' => ['sometimes', 'boolean']
         ];
-    }
-
-    public function validated()
-    {
-        $request = $this->validator->validated();
-
-        if ($this->has('name')) {
-            $request['slug'] = Str::slug($this->name);
-        }
-        
-        return $request;
     }
 }

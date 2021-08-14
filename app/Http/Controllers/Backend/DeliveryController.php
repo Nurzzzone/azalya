@@ -37,34 +37,12 @@ class DeliveryController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $model = self::MODEL;
-        return view("backend.pages.{$this->route}.create", [$this->object => new $model()]);
-    }
-
-    /**
-     * @param  CreateDeliveryRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(CreateDeliveryRequest $request)
-    {
-        try {
-            (self::MODEL)::create($request->validated());
-        } catch (\Exception $exception) {
-            return $this->flashErrorMessage($request, $exception);
-        }
-        return $this->flashSuccessMessage($request, "backend.{$this->route}.index");
-    }
-
-    /**
      * @param  Delivery $delivery
      * @return \Illuminate\Http\Response
      */
     public function show(Delivery $delivery)
     {
+        $delivery = Delivery::first();
         return view("backend.pages.{$this->route}.show", compact($this->object));
     }
 
@@ -86,20 +64,6 @@ class DeliveryController extends Controller
     {
         try {
             $delivery->update($request->validated());
-        } catch (\Exception $exception) {
-            return $this->flashErrorMessage($request, $exception);
-        }
-        return $this->flashSuccessMessage($request, "backend.{$this->route}.index");
-    }
-
-    /**
-     * @param  Delivery $delivery
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Delivery $delivery, Request $request)
-    {
-        try {
-            $delivery->delete();
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }

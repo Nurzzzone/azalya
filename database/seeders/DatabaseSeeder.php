@@ -21,7 +21,11 @@ class DatabaseSeeder extends Seeder
             FormatSeeder::class,
             SizeSeeder::class,
             TypesSeeder::class,
-            MapSeeder::class
+            MapSeeder::class,
+            DeliverySeeder::class,
+            AboutSeeder::class,
+            HomepageAboutSeeder::class,
+            ProductAboutSeeder::class,
         ]);
     }
 }

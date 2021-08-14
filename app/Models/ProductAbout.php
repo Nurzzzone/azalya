@@ -13,10 +13,5 @@ class ProductAbout extends Model
         'name',
         'image',
         'description',
-        'is_active'
-    ];
-
-    protected $casts = [
-        'is_active' => 'boolean'
     ];
 }

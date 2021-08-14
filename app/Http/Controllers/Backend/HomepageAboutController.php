@@ -22,40 +22,6 @@ class HomepageAboutController extends Controller
         $this->route = 'homepage.about';
     }
 
-    /**
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view("backend.pages.{$this->route}.index", 
-        [
-            'about' => (self::MODEL)::paginate(10),
-            'theaders' => self::THEADERS
-        ]);
-    }
-
-    /**
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $model = self::MODEL;
-        return view("backend.pages.{$this->route}.create", ['about' => new $model()]);
-    }
-
-    /**
-     * @param  CreateAboutRequest $request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(CreateAboutRequest $request)
-    {
-        try {
-            (self::MODEL)::create($request->validated());
-        } catch (\Exception $exception) {
-            return $this->flashErrorMessage($request, $exception);
-        }
-        return $this->flashSuccessMessage($request, "backend.{$this->route}.index");
-    }
 
     /**
      * @param  HomepageAbout $about
@@ -63,6 +29,7 @@ class HomepageAboutController extends Controller
      */
     public function show(HomepageAbout $about)
     {
+        $about = HomepageAbout::first();
         return view("backend.pages.{$this->route}.show", compact('about'));
     }
 
@@ -84,20 +51,6 @@ class HomepageAboutController extends Controller
     {
         try {
             $about->update($request->validated());
-        } catch (\Exception $exception) {
-            return $this->flashErrorMessage($request, $exception);
-        }
-        return $this->flashSuccessMessage($request, "backend.{$this->route}.index");
-    }
-
-    /**
-     * @param  HomepageAbout $about
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(HomepageAbout $about, Request $request)
-    {
-        try {
-            $about->delete();
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
