@@ -29,9 +29,19 @@ class ProductsController extends Controller
     {
         try {
             User::authenticated($request)->toggleFavorite($product);
-        } catch (\Throwable $th) {
+        } catch (\Exception $exception) {
             return $this->sendErrorMessage();
         }
         return $this->sendSuccessMessage();
+    }
+
+    public function filter(Request $request)
+    {
+        $products = (self::MODEL)::filter($request)
+            ->where('is_active', true)
+            ->paginate(9);
+        return (new ProductCollection($products))
+            ->response()
+            ->setEncodingOptions(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 }

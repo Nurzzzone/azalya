@@ -14,4 +14,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\\V1'], function() {
     Route::get('/members', 'MemberController@index');
     Route::get('/delivery', 'DeliveryController@index');
     Route::post('/products/{product}/favorites', 'ProductsController@toggleFavorite');
+    Route::post('/products/filter', 'ProductsController@filter');
+    Route::get('/user/{user}/favorites', 'UserController@list');
 });

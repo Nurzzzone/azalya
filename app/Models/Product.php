@@ -58,30 +58,35 @@ class Product extends Model
 
     public function scopeFilter($query, $request)
     {
-        $category = Category::where('slug', $request('category_slug'))->first();
-        $query->where('category', $category->id);
+        $category = Category::where('slug', $request['category'])->first();
+        $query->where('category_id', $category->id);
 
-        if ($request('price_from') && $request('price_to')) {
-            $query->whereBetween($request('price_from'), $request('price_to'));
-        } elseif ($request('price_from')) {
-            $query->where('price', '>=', $request('price_from'));
-        } elseif ($request('price_to')) {
-            $query->where('price', '<=', $request('price_to'));
+        if ($request->has('price_from') && $request->has('price_to')) {
+            $price_between = $request->only('price_from', 'price_to');
+            $query->whereBetween("price", $price_between);
+        } elseif ($request->has('price_from')) {
+            $query->where('price', '>=', $request['price_from']);
+        } elseif ($request->has('price_to')) {
+            $query->where('price', '<=', $request['price_to']);
         }
 
-        if ($request('product_type')) {
-            $type = Type::where('slug', $request('product_type'))->first();
-            $query->where('type', '>=', $type->id);
+        if ($request->has('type')) {
+            $type = Type::where('slug', $request['type'])->first();
+            $query->where('type_id', $type->id);
         }
 
-        if ($request('product_size')) {
-            $size = Size::where('slug', $request('product_size'))->first();
-            $query->where('size', '>=', $size->id);
+        if ($request->has('size')) {
+            $size = Size::where('slug', $request['size'])->first();
+            $query->whereHas('sizes', fn($query) => 
+                $query->where('sizes.id', $size->id));
         }
 
-        if ($request('product_format')) {
-            
+        if ($request->has('format')) {
+            $format = Format::where('slug', $request['format'])->first();
+            $query->whereHas('formats', fn($query) => 
+                $query->where('formats.id', $format->id));
         }
+
         return $query;
     }
 }
