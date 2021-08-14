@@ -26,6 +26,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             'name' => ['sometimes', 'string', 'max:255'],
+            'in_homepage' => ['nullable', 'boolean'],
         ];
     }
 

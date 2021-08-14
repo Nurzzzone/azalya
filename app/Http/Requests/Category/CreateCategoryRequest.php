@@ -26,6 +26,7 @@ class CreateCategoryRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'in_homepage' => ['nullable', 'boolean'],
         ];
     }
 

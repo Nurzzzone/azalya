@@ -32,6 +32,8 @@ class CreateProductRequest extends FormRequest
             'is_active' => ['nullable', 'boolean'],
             'in_stock' => ['nullable', 'boolean'],
             'is_popular' => ['nullable', 'boolean'],
+            'in_homepage' => ['nullable', 'boolean'],
+            'type_id' => ['sometimes', 'integer'],
             'category_id' => ['required', 'integer'],
             'format' => ['required'],
             'size' => ['required']
