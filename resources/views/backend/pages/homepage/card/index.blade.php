@@ -1,6 +1,6 @@
 @extends('backend.layouts.base')
 
-@section('title', trans('pages.pages'))
+@section('title', trans('pages.homepage.card'))
 
 @php($objects = $card)
 @php($route = 'homepage.card')

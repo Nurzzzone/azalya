@@ -1,6 +1,6 @@
 @extends('backend.layouts.base')
 
-@section('title', trans('pages.pages'))
+@section('title', trans('pages.delivery'))
 
 @php($object = $delivery)
 @php($route = 'delivery')
