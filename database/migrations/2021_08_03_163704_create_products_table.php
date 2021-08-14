@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->boolean('is_active')->default(0);
             $table->boolean('is_popular')->default(0);
             $table->boolean('in_homepage')->default(0);
+            $table->foreignId('type_id')->constrained('types')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
