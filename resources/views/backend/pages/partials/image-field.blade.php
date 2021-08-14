@@ -8,7 +8,7 @@
             <div class="avatar-preview">
                 @php
                     if ($current_image !== null) {
-                        $image = asset('storage/'.str_replace('\\', '/', $current_image));
+                        $image = asset(str_replace('\\', '/', $current_image));
                     } else {
                         $image = asset('images/defaults/background.jpg');
                     }

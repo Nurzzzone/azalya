@@ -7,6 +7,7 @@ Route::resource('/products', 'ProductsController');
 Route::resource('/categories', 'CategoriesController');
 Route::resource('/formats', 'FormatsController');
 Route::resource('/size', 'SizesController');
+Route::resource('/type', 'TypeController');
 Route::resource('/homepage/slider', 'HomepageSliderController', ['names' => 'homepage.slider']);
 Route::resource('/homepage/about', 'HomepageAboutController', ['names' => 'homepage.about']);
 Route::resource('/homepage/card', 'HomepageCardController', ['names' => 'homepage.card']);

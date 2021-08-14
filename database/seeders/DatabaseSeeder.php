@@ -9,8 +9,6 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
-     *
      * @return void
      */
     public function run()
@@ -22,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             FormatSeeder::class,
             SizeSeeder::class,
+            TypesSeeder::class,
         ]);
     }
 }
