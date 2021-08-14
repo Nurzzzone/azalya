@@ -137,14 +137,6 @@ class MenusTableSeeder extends Seeder
         $this->insertLink('admin', 'dashboard', '/admin', 'cil-speedometer');
         $this->insertLink('admin', 'pages', '/admin/pages', 'cil-speedometer');
 
-        $this->beginDropdown('admin', 'products', 'cil-calculator');
-            $this->insertLink('admin', 'list', '/admin/products', 'cil-speedometer');
-            $this->insertLink('admin', 'categories', '/admin/categories', 'cil-speedometer');
-            $this->insertLink('admin', 'formats', '/admin/formats', 'cil-speedometer');
-            $this->insertLink('admin', 'size', '/admin/size', 'cil-speedometer');
-            $this->insertLink('admin', 'type', '/admin/type', 'cil-speedometer');
-        $this->endDropdown();
-
         $this->beginDropdown('admin', 'settings', 'cil-calculator');
             $this->insertLink('admin', 'users',                   '/users');
             $this->insertLink('admin', 'Edit menu',               '/menu/menu');

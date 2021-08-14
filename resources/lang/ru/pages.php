@@ -18,6 +18,7 @@ return [
     'homepage' => 'Главная',
     'about' => 'О нас',
     'pages' => 'Страницы',
+    'products.page' => 'Каталог',
     'homepage.slider' => 'Слайдер',
     'homepage.cards' => 'Карточки',
     'homepage.about' => 'О нас',

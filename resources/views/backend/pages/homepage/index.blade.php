@@ -19,7 +19,8 @@
                                         ]
                                     ])
                                     @include('backend.pages.partials.tr-route', 
-                                        ['name' => __('pages.products'), 'childs' => [
+                                        ['name' => __('pages.products.page'), 'childs' => [
+                                            ['name' => 'pages.products', 'route' => route('backend.products.index')],
                                             ['name' => 'pages.about', 'route' => route('backend.product.about.show')],
                                         ]
                                     ])
@@ -32,7 +33,7 @@
                                     @include('backend.pages.partials.tr-route', 
                                         ['name' => __('pages.delivery'), 'route' => route('backend.delivery.show')])
                                     @include('backend.pages.partials.tr-route', ['name' => __('pages.contacts'), 'childs' => [
-                                        ['name' => 'pages.contacts', 'route' => route('backend.contacts.index')],
+                                        ['name' => 'pages.list', 'route' => route('backend.contacts.index')],
                                         ['name' => 'pages.map', 'route' => route('backend.map.show')]
                                     ]])
                                 </tbody>

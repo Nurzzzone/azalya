@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-end">
+                        <div class="card-header d-flex justify-content-between">
+                            @include('backend.pages.products.__dropdown')
                             <a class="btn btn-success" href="{{ route('backend.products.create') }}">@lang('buttons.create')</a>
                         </div>
                         <div class="card-body">
