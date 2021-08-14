@@ -9,6 +9,7 @@ Route::resource('/formats', 'FormatsController');
 Route::resource('/size', 'SizesController');
 Route::resource('/homepage/slider', 'HomepageSliderController', ['names' => 'homepage.slider']);
 Route::resource('/homepage/about', 'HomepageAboutController', ['names' => 'homepage.about']);
+Route::resource('/homepage/card', 'HomepageCardController', ['names' => 'homepage.card']);
 Route::resource('/member', 'MemberController');
 Route::resource('/about', 'AboutController');
 Route::resource('/delivery', 'DeliveryController');

@@ -8,7 +8,7 @@ return [
     'phone_number' => 'Номер телефона',
     'email_address' => 'Электронная почта',
     'password'  => 'Пароль',
-    'image' => 'Изображение|Изображения',
+    'image' => 'Изображение',
     'icon' => 'Иконка',
     'logo' => 'Логотип',
     'twitter' => 'Twitter',
