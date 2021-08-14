@@ -14,7 +14,9 @@
                         <div class="card-body">
                             <table class="table table-striped table-bordered datatable mb-0">
                                 <tbody>
+                                    @include('backend.pages.partials.tr-image', ['image' => $object->image])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->name, 'locale' => 'fields.name', 'tr' => 'text'])
+                                    @include('backend.pages.partials.tr-text', ['data' => $object->description, 'locale' => 'fields.description', 'tr' => 'textarea'])
                                 </tbody>
                             </table>
                         </div>

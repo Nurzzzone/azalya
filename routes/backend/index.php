@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::view('/pages', 'backend.pages.homepage.index');
+
 Route::resource('/products/about', 'ProductAboutController', ['names' => 'product.about', 'only' => ['edit', 'update']]);
 Route::get('/products/about', 'ProductAboutController@show')->name('product.about.show');
 

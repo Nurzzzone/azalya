@@ -56,3 +56,14 @@ textarea{
         width: 100%;
     }
 }
+
+.pages__dropdown-item {
+    border-radius: 0;
+    transition: unset;
+}
+
+.pages__dropdown-item:hover {
+    border-radius: 0;
+    transition: unset;
+    background-color: rgba(0, 0, 21, 0.075);
+}

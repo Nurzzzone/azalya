@@ -24,10 +24,9 @@ class AboutController extends Controller
     }
 
     /**
-     * @param  CreateAboutRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function show(CreateAboutRequest $request)
+    public function show(About $about)
     {
         $about = About::first();
         return view("backend.pages.{$this->route}.show", compact($this->object));

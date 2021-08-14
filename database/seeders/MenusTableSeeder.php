@@ -135,6 +135,7 @@ class MenusTableSeeder extends Seeder
         ]);
         $this->menuId = DB::getPdo()->lastInsertId();  //set menuId
         $this->insertLink('admin', 'dashboard', '/admin', 'cil-speedometer');
+        $this->insertLink('admin', 'pages', '/admin/pages', 'cil-speedometer');
 
         $this->beginDropdown('admin', 'products', 'cil-calculator');
             $this->insertLink('admin', 'list', '/admin/products', 'cil-speedometer');
@@ -142,19 +143,6 @@ class MenusTableSeeder extends Seeder
             $this->insertLink('admin', 'formats', '/admin/formats', 'cil-speedometer');
             $this->insertLink('admin', 'size', '/admin/size', 'cil-speedometer');
             $this->insertLink('admin', 'type', '/admin/type', 'cil-speedometer');
-        $this->endDropdown();
-
-        $this->insertLink('admin', 'homepage.slider', '/admin/homepage/slider', 'cil-speedometer');
-        $this->insertLink('admin', 'homepage.about', '/admin/homepage/about', 'cil-speedometer');
-        $this->insertLink('admin', 'homepage.card', '/admin/homepage/card', 'cil-speedometer');
-        $this->insertLink('admin', 'products.about', '/admin/products/about', 'cil-speedometer');
-        $this->insertLink('admin', 'about', '/admin/about', 'cil-speedometer');
-        $this->insertLink('admin', 'member', '/admin/member', 'cil-speedometer');
-        $this->insertLink('admin', 'delivery', '/admin/delivery', 'cil-speedometer');
-
-        $this->beginDropdown('admin', 'contacts', 'cil-calculator');
-            $this->insertLink('admin', 'list', '/admin/contacts', 'cil-speedometer');
-            $this->insertLink('admin', 'map', '/admin/map', 'cil-speedometer');
         $this->endDropdown();
 
         $this->beginDropdown('admin', 'settings', 'cil-calculator');

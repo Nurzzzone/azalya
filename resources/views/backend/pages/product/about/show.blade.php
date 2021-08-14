@@ -17,7 +17,6 @@
                                     @include('backend.pages.partials.tr-image', ['image' => $object->image])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->name, 'locale' => 'fields.name', 'tr' => 'text'])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->description, 'locale' => 'fields.description', 'tr' => 'textarea'])
-                                    @include('backend.pages.partials.tr-active', ['data' => $object->is_active])
                                 </tbody>
                             </table>
                         </div>

@@ -15,4 +15,10 @@ return [
     'contacts' => 'Контакты',
     'map' => 'Карта',
     'member' => 'Сотрудники',
+    'homepage' => 'Главная',
+    'about' => 'О нас',
+    'pages' => 'Страницы',
+    'homepage.slider' => 'Слайдер',
+    'homepage.cards' => 'Карточки',
+    'homepage.about' => 'О нас',
 ];
