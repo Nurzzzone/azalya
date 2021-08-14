@@ -4,6 +4,7 @@
         @include('backend.pages.partials.input', ['input' => 'number', 'field' => "price", 'current_value' => $product->price, 'locale' => 'fields.price'])
         @include('backend.pages.partials.input', ['input' => 'number', 'field' => "discount", 'current_value' => $product->discount, 'locale' => 'fields.discount'])
         @include('backend.pages.partials.select', ['field' => 'category_id', 'select_options' => $categories, 'default' => $product->category->id ?? null, 'locale' => 'fields.category'])
+        @include('backend.pages.partials.select', ['field' => 'type_id', 'select_options' => $types, 'default' => $product->type->id ?? null, 'locale' => 'fields.type'])
         @include('backend.pages.partials.image-field', ['current_image' => $product->image])
         @include('backend.pages.partials.textarea', ['field' => "description",'current_value' => $product->description])
         @include('backend.pages.partials.checkbox', ['field' => 'format', 'locale' => 'fields.format', 'chosen' => $product->formats, 'items' => $formats])

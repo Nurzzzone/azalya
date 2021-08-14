@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Size;
+use App\Models\Type;
 use App\Models\Format;
 use App\Models\Product;
 use App\Models\Category;
@@ -36,8 +37,9 @@ class ProductsController extends Controller
         $categories = Category::pluck('name', 'id');
         $formats = Format::pluck('name', 'id');
         $sizes = Size::pluck('name', 'id');
+        $types = Type::pluck('name', 'id');
         return view('backend.pages.products.create', 
-            compact('product', 'categories', 'formats', 'sizes'));
+            compact('product', 'categories', 'formats', 'sizes', 'types'));
     }
 
     /**
@@ -73,8 +75,9 @@ class ProductsController extends Controller
         $categories = Category::pluck('name', 'id');
         $formats = Format::pluck('name', 'id');
         $sizes = Size::pluck('name', 'id');
+        $types = Type::pluck('name', 'id');
         return view('backend.pages.products.edit', 
-            compact('product', 'categories', 'formats', 'sizes'));
+            compact('product', 'categories', 'formats', 'sizes', 'types'));
     }
 
     /**

@@ -32,6 +32,7 @@ class ProductFactory extends Factory
             'is_active' => true,
             'is_popular' => $this->faker->numberBetween(0, 1),
             'in_homepage' => false,
+            'type_id' => $this->faker->numberBetween(1, 4),
             'category_id' => $this->faker->numberBetween(1, 4),
         ];
     }
