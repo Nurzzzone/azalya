@@ -137,7 +137,7 @@ class MenusTableSeeder extends Seeder
         $this->insertLink('admin', 'dashboard', '/admin', 'cil-speedometer');
 
         $this->beginDropdown('admin', 'products', 'cil-calculator');
-            $this->insertLink('admin', 'products.list', '/admin/products', 'cil-speedometer');
+            $this->insertLink('admin', 'list', '/admin/products', 'cil-speedometer');
             $this->insertLink('admin', 'categories', '/admin/categories', 'cil-speedometer');
             $this->insertLink('admin', 'formats', '/admin/formats', 'cil-speedometer');
             $this->insertLink('admin', 'size', '/admin/size', 'cil-speedometer');
@@ -151,8 +151,11 @@ class MenusTableSeeder extends Seeder
         $this->insertLink('admin', 'member', '/admin/member', 'cil-speedometer');
         $this->insertLink('admin', 'about', '/admin/about', 'cil-speedometer');
         $this->insertLink('admin', 'delivery', '/admin/delivery', 'cil-speedometer');
-        $this->insertLink('admin', 'contacts', '/admin/contacts', 'cil-speedometer');
-        $this->insertLink('admin', 'map', '/admin/map', 'cil-speedometer');
+
+        $this->beginDropdown('admin', 'contacts', 'cil-calculator');
+            $this->insertLink('admin', 'list', '/admin/contacts', 'cil-speedometer');
+            $this->insertLink('admin', 'map', '/admin/map', 'cil-speedometer');
+        $this->endDropdown();
 
         $this->beginDropdown('admin', 'settings', 'cil-calculator');
             $this->insertLink('admin', 'users',                   '/users');

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             FormatSeeder::class,
             SizeSeeder::class,
             TypesSeeder::class,
+            MapSeeder::class
         ]);
     }
 }
