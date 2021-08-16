@@ -18,7 +18,8 @@
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.2",
         "spatie/laravel-medialibrary": "^8.7.2",
-        "spatie/laravel-permission": "^3.17"
+        "spatie/laravel-permission": "^3.17",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

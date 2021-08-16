@@ -42,13 +42,13 @@ trait HasJsonResponse
      * @param $token
      * @return \Illuminate\Http\JsonResponse
      */
-    public function sendSuccessMessageWithToken($data)
+    public function sendSuccessMessageWithToken(array $data)
     {
-        return response()->json([
+        $default = [
             'message'    => 'Авторизация прошла успешно!', 
             'status'     => 200,
-            'data'       => $data,
-        ]);
+        ];
+        return response()->json(array_merge($default, $data));
     }
 
     /**

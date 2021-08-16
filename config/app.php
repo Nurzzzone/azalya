@@ -177,6 +177,7 @@ return [
         
         Spatie\Permission\PermissionServiceProvider::class,
         ChristianKuri\LaravelFavorite\FavoriteServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class
     ],
 
     /*
