@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\User;
+use App\Models\Benefit;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\ProductAbout;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\ProductCollection;
 use App\Traits\HasJsonResponse;
+use App\Http\Resources\ProductCollection;
+use App\Http\Controllers\Api\V1\Controller;
 
 class ProductsController extends Controller
 {
@@ -18,11 +21,26 @@ class ProductsController extends Controller
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function page()
     {
-        return (new ProductCollection((self::MODEL)::where('is_active', true)->paginate(9)))
-            ->response()
-            ->setEncodingOptions(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        return $this->sendSuccessMessage([
+            'products' => Product::where('is_active', true)->paginate(9),
+            'categories' => Category::all(['name', 'slug']),
+            'about' => ProductAbout::first(['name', 'description']),
+        ]);
+    }
+
+    
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(Product $product)
+    {
+        return $this->sendSuccessMessage([
+            'product' => $product,
+            'benefits' => Benefit::inProduct(),
+            'interesting' => Product::where('is_active', true)->take(9),
+        ]);
     }
 
     public function toggleFavorite(Product $product, Request $request)

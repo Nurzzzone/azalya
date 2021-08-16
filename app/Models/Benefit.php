@@ -21,4 +21,22 @@ class Benefit extends Model
         'in_about' => 'boolean',
         'in_product' => 'boolean'
     ];
+
+    public function scopeInHome($query)
+    {
+        return $query
+            ->where('in_homepage', true)->take(4);
+    }
+
+    public function scopeInAbout($query)
+    {
+        return $query
+            ->where('in_about', true)->take(10);
+    }
+
+    public function scopeInProduct($query)
+    {
+        return $query
+            ->where('in_product', true)->get(5);
+    }
 }

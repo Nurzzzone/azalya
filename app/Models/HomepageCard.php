@@ -13,4 +13,11 @@ class HomepageCard extends Model
         'name',
         'image',
     ];
+
+    public function scopeInHome($query)
+    {
+        return $query
+            ->where('is_active', true)
+            ->where('in_homepage', true)->get();
+    }
 }

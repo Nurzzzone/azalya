@@ -89,4 +89,11 @@ class Product extends Model
 
         return $query;
     }
+
+    public function scopeInHome($query)
+    {
+        return $query
+            ->where('is_active', true)
+            ->where('in_homepage', true)->take(9);
+    }
 }
