@@ -15,6 +15,7 @@ class DeliveryController extends Controller
 
     protected const MODEL = Delivery::class;
     protected const COLUMNS = ['id', 'title', 'description'];
+    protected const UPLOAD_PATH = "delivery\\";
     protected $route;
     protected $object;
 
@@ -63,6 +64,8 @@ class DeliveryController extends Controller
     public function update(UpdateDeliveryRequest $request, Delivery $delivery)
     {
         try {
+            $data = $request->validationData();
+            $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $delivery->image, self::UPLOAD_PATH);
             $delivery->update($request->validated());
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);

@@ -14,6 +14,7 @@ class AboutController extends Controller
 
     protected const MODEL = About::class;
     protected const COLUMNS = ['id', 'name'];
+    protected const UPLOAD_PATH = "about\\";
     protected $route;
     protected $object;
 
@@ -49,7 +50,9 @@ class AboutController extends Controller
     public function update(UpdateAboutRequest $request, About $about)
     {
         try {
-            $about->update($request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $about->image, self::UPLOAD_PATH);
+            $about->update($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }

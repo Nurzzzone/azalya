@@ -14,6 +14,7 @@ class MemberController extends Controller
 
     protected const MODEL = Member::class;
     protected const COLUMNS = ['id', 'fullname', 'position'];
+    protected const UPLOAD_PATH = "member\\";
     protected $route;
     protected $object;
 
@@ -51,7 +52,9 @@ class MemberController extends Controller
     public function store(CreateMemberRequest $request)
     {
         try {
-            (self::MODEL)::create($request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->uploadFile($request['image'], self::UPLOAD_PATH);
+            (self::MODEL)::create($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
@@ -84,7 +87,9 @@ class MemberController extends Controller
     public function update(CreateMemberRequest $request, Member $member)
     {
         try {
-            $member->update($request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $member->image, self::UPLOAD_PATH);
+            $member->update($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }

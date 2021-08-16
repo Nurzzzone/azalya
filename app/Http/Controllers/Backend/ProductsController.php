@@ -18,6 +18,7 @@ class ProductsController extends Controller
     use HasFlashMessage;
 
     protected const MODEL = Product::class;
+    protected const UPLOAD_PATH = "product\\products\\";
 
     /**
      * @return \Illuminate\Http\Response
@@ -49,7 +50,9 @@ class ProductsController extends Controller
     public function store(CreateProductRequest $request)
     {
         try {
-            $product = Product::create($data = $request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->uploadFile($request['image'], self::UPLOAD_PATH);
+            $product = (self::MODEL)::create($data);
             $product->sizes()->attach($data['size']);
             $product->formats()->attach($data['formats']);
         } catch (\Exception $exception) {
@@ -88,7 +91,9 @@ class ProductsController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         try {
-            $product->update($data = $request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $product->image, self::UPLOAD_PATH);
+            $product->update($data);
             $product->formats()->sync($data['format'] ?? []);
             $product->sizes()->sync($data['size'] ?? []);
         } catch (\Exception $exception) {

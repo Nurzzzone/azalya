@@ -15,6 +15,7 @@ class HomepageSliderController extends Controller
 
     protected const MODEL = HomepageSlider::class;
     protected const THEADERS = ['fields.id', 'fields.name'];
+    protected const UPLOAD_PATH = "homepage\\slider";
     protected $route;
 
     public function __construct()
@@ -50,7 +51,9 @@ class HomepageSliderController extends Controller
     public function store(CreateSliderRequest $request)
     {
         try {
-            (self::MODEL)::create($request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->uploadFile($request['image'], self::UPLOAD_PATH);
+            (self::MODEL)::create($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
@@ -83,7 +86,9 @@ class HomepageSliderController extends Controller
     public function update(UpdateSliderRequest $request, HomepageSlider $slider)
     {
         try {
-            $slider->update($request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $slider->image, self::UPLOAD_PATH);
+            $slider->update($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }

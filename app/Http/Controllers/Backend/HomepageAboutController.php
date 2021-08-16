@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
 use App\Models\HomepageAbout;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Homepage\CreateAboutRequest;
 use App\Http\Requests\Homepage\UpdateAboutRequest;
 
 class HomepageAboutController extends Controller
@@ -15,6 +13,7 @@ class HomepageAboutController extends Controller
 
     protected const MODEL = HomepageAbout::class;
     protected const THEADERS = ['fields.id', 'fields.name'];
+    protected const UPLOAD_PATH = "homepage\\about\\";
     protected $route;
 
     public function __construct()
@@ -50,6 +49,8 @@ class HomepageAboutController extends Controller
     public function update(UpdateAboutRequest $request, HomepageAbout $about)
     {
         try {
+            $data = $request->validationData();
+            $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $about->image, self::UPLOAD_PATH);
             $about->update($request->validated());
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);

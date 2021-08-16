@@ -15,6 +15,7 @@ class ContactsController extends Controller
 
     protected const MODEL = Contacts::class;
     protected const COLUMNS = ['id', 'name', 'value'];
+    protected const UPLOAD_PATH = "contacts\\";
     protected $route;
     protected $object;
 
@@ -52,7 +53,9 @@ class ContactsController extends Controller
     public function store(CreateContactsRequest $request)
     {
         try {
-            (self::MODEL)::create($request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->uploadFile($request['image'], self::UPLOAD_PATH);
+            (self::MODEL)::create($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
@@ -85,7 +88,9 @@ class ContactsController extends Controller
     public function update(UpdateContactsRequest $request, Contacts $contacts)
     {
         try {
-            $contacts->update($request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $contacts->image, self::UPLOAD_PATH);
+            $contacts->update($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }

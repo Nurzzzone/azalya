@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Product\CreateAboutRequest;
 use App\Http\Requests\Product\UpdateAboutRequest;
 use App\Models\ProductAbout;
 
@@ -16,6 +13,7 @@ class ProductAboutController extends Controller
 
     protected const MODEL = ProductAbout::class;
     protected const THEADERS = ['fields.id', 'fields.name'];
+    protected const UPLOAD_PATH = "product\\about\\";
     protected $route;
 
     public function __construct()
@@ -50,7 +48,9 @@ class ProductAboutController extends Controller
     public function update(UpdateAboutRequest $request, ProductAbout $about)
     {
         try {
-            $about->update($request->validated());
+            $data = $request->validationData();
+            $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $about->image, self::UPLOAD_PATH);
+            $about->update($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
