@@ -18,8 +18,8 @@
                                     @include('backend.pages.partials.tr-text', ['data' => $object->title, 'locale' => 'fields.title', 'tr' => 'text'])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->description_title, 'locale' => 'fields.description_title', 'tr' => 'text'])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->description, 'locale' => 'fields.description', 'tr' => 'textarea'])
-                                    @include('backend.pages.partials.tr-text', ['data' => $object->price_title, 'locale' => 'fields.price_title', 'tr' => 'text'])
-                                    @include('backend.pages.partials.tr-text', ['data' => $object->price, 'locale' => 'fields.price', 'tr' => 'textarea'])
+                                    @include('backend.pages.partials.tr-text', ['data' => $object->price_title, 'locale' => 'fields.payment_title', 'tr' => 'text'])
+                                    @include('backend.pages.partials.tr-text', ['data' => $object->price, 'locale' => 'fields.payment', 'tr' => 'textarea'])
 
                                 </tbody>
                             </table>
