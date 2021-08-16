@@ -29,6 +29,7 @@ class UpdateProductRequest extends FormRequest
             'price' => ['sometimes', 'filled', 'numeric'],
             'discount' => ['nullable', 'numeric'],
             'image' => ['nullable', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp'],
+            'previous_image' => ['nullable', 'string'],
             'is_active' => ['nullable', 'boolean'],
             'in_stock' => ['nullable', 'boolean'],
             'is_popular' => ['nullable', 'boolean'],

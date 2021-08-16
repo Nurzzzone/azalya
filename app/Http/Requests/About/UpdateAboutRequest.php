@@ -23,6 +23,7 @@ class UpdateAboutRequest extends FormRequest
             'name' => ['sometimes', 'string', 'max:255'],
             'description' => ['sometimes', 'string', 'max:16000'],
             'image' => ['nullable', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp'],
+            'previous_image' => ['nullable', 'string'],
         ];
     }
 }

@@ -23,7 +23,8 @@ class UpdateContactsRequest extends FormRequest
         return [
             'name' => ['sometimes', 'string', 'max:255'],
             'value' => ['sometimes', 'string', 'max:8000'],
-            'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg']
+            'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg'],
+            'previous_image' => ['nullable', 'string'],
         ];
     }
 }

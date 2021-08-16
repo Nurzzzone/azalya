@@ -26,7 +26,8 @@ class UpdateDeliveryRequest extends FormRequest
             'price_title' => ['sometimes', 'string', 'max:255'],
             'description' => ['sometimes', 'string', 'max:16000'],
             'price' => ['sometimes', 'string', 'max:16000'],
-            'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg']
+            'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg'],
+            'previous_image' => ['nullable', 'string'],
         ];
     }
 }

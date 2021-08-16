@@ -24,6 +24,7 @@ class UpdateMemberRequest extends FormRequest
             'fullname' => ['sometimes', 'string', 'max:255'],
             'position' => ['sometimes', 'string', 'max:255'],
             'image' => ['nullable', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp'],
+            'previous_image' => ['nullable', 'string'],
             'is_active' => ['required', 'boolean']
         ];
     }
