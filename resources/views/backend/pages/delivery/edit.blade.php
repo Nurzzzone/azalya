@@ -11,7 +11,8 @@
 @php($route = 'delivery')
 @php($options = [
     'method'  => 'PATCH',
-    'url'     => route("backend.{$route}.update", $object->id)
+    'url'     => route("backend.{$route}.update", $object->id),
+    'enctype' => 'multipart/form-data'
 ])
 
 @section('content')

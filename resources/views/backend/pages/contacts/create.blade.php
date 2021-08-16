@@ -11,6 +11,7 @@
 @php($options = [
     'method'  => 'POST',
     'url'     => route("backend.$route.store"),
+    'enctype' => 'multipart/form-data'
 ])
 
 @section('content')
