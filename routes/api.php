@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api\\V1'], function() {
+    Route::view('/routes', 'api.v1.pages.routes');
 
     Route::group(['prefix' => 'auth'], function() {
         Route::post('/register', 'AuthController@register');
