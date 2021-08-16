@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 trait HasFile
@@ -26,8 +27,8 @@ trait HasFile
      */
     protected function deleteFile(string $file_name): void
     {
-        if ($file_name !== null && Storage::disk('public')->exists($file_name)) {
-            Storage::disk('public')->delete($file_name);
+        if ($file_name !== null && File::exists($file_name)) {
+            File::delete($file_name);
         }
     }
 

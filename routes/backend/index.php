@@ -3,3 +3,4 @@
 use Illuminate\Support\Facades\Route;
 
 Route::view('/pages', 'backend.pages.homepage.index');
+Route::resource('/benefit', 'BenefitController');
