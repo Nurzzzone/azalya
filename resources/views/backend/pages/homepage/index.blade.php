@@ -36,6 +36,11 @@
                                         ['name' => 'pages.list', 'route' => route('backend.contacts.index')],
                                         ['name' => 'pages.map', 'route' => route('backend.map.show')]
                                     ]])
+                                    @include('backend.pages.partials.tr-route', 
+                                        ['name' => __('pages.common'), 'childs' => [
+                                            ['name' => 'pages.benefit', 'route' => route('backend.benefit.index')]
+                                        ]
+                                    ])
                                 </tbody>
                             </table>
                         </div>

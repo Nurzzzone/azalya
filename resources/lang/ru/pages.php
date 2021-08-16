@@ -22,4 +22,6 @@ return [
     'homepage.slider' => 'Слайдер',
     'homepage.cards' => 'Карточки',
     'homepage.about' => 'О нас',
+    'benefit' => 'Преймущества',
+    'common' => 'Общее',
 ];
