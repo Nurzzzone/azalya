@@ -24,4 +24,5 @@ return [
     'homepage.about' => 'О нас',
     'benefit' => 'Преймущества',
     'common' => 'Общее',
+    'promotions' => 'Акции',
 ];
