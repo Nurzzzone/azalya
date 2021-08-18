@@ -1,7 +1,6 @@
 <tr>
     <th class="align-start">
         <span class="mt-2 d-block">{{ trans_choice($locale ?? 'fields.image', $prular ?? 1) }}</span>
-        <small class="text-muted">@lang('messages.products.image_type') {{ $image_types ?? null }}</small>
     </th>
     <td>
         <div class="avatar-upload">
