@@ -2,16 +2,15 @@
 
 namespace app\Http\Controllers\Backend;
 
+use App\Traits\HasFile;
 use App\Models\Delivery;
-use Illuminate\Http\Request;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Delivery\CreateDeliveryRequest;
 use App\Http\Requests\Delivery\UpdateDeliveryRequest;
 
 class DeliveryController extends Controller
 {
-    use HasFlashMessage;
+    use HasFlashMessage, HasFile;
 
     protected const MODEL = Delivery::class;
     protected const COLUMNS = ['id', 'title', 'description'];

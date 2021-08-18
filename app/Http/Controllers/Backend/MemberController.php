@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Member;
+use App\Traits\HasFile;
 use Illuminate\Http\Request;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
@@ -10,7 +11,7 @@ use App\Http\Requests\Member\CreateMemberRequest;
 
 class MemberController extends Controller
 {
-    use HasFlashMessage;
+    use HasFlashMessage, HasFile;
 
     protected const MODEL = Member::class;
     protected const COLUMNS = ['id', 'fullname', 'position'];

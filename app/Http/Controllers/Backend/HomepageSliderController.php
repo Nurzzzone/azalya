@@ -8,10 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Homepage\CreateSliderRequest;
 use App\Http\Requests\Homepage\UpdateSliderRequest;
 use App\Models\HomepageSlider;
+use App\Traits\HasFile;
 
 class HomepageSliderController extends Controller
 {
-    use HasFlashMessage;
+    use HasFlashMessage, HasFile;
 
     protected const MODEL = HomepageSlider::class;
     protected const THEADERS = ['fields.id', 'fields.name'];

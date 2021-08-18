@@ -2,6 +2,7 @@
 
 namespace app\Http\Controllers\Backend;
 
+use App\Traits\HasFile;
 use App\Models\Contacts;
 use Illuminate\Http\Request;
 use App\Traits\HasFlashMessage;
@@ -11,7 +12,7 @@ use App\Http\Requests\Contacts\UpdateContactsRequest;
 
 class ContactsController extends Controller
 {
-    use HasFlashMessage;
+    use HasFlashMessage, HasFile;
 
     protected const MODEL = Contacts::class;
     protected const COLUMNS = ['id', 'name', 'value'];

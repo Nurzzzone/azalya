@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Traits\HasFile;
+use App\Models\ProductAbout;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\UpdateAboutRequest;
-use App\Models\ProductAbout;
 
 class ProductAboutController extends Controller
 {
-    use HasFlashMessage;
+    use HasFlashMessage, HasFile;
 
     protected const MODEL = ProductAbout::class;
     protected const THEADERS = ['fields.id', 'fields.name'];

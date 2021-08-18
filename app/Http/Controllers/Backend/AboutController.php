@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\About;
+use App\Traits\HasFile;
 use App\Traits\HasFlashMessage;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\About\CreateAboutRequest;
 use App\Http\Requests\About\UpdateAboutRequest;
 
 class AboutController extends Controller
 {
-    use HasFlashMessage;
+    use HasFlashMessage, HasFile;
 
     protected const MODEL = About::class;
     protected const COLUMNS = ['id', 'name'];

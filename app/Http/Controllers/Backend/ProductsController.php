@@ -6,6 +6,7 @@ use App\Models\Size;
 use App\Models\Type;
 use App\Models\Format;
 use App\Models\Product;
+use App\Traits\HasFile;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Traits\HasFlashMessage;
@@ -15,7 +16,7 @@ use App\Http\Requests\Product\UpdateProductRequest;
 
 class ProductsController extends Controller
 {
-    use HasFlashMessage;
+    use HasFlashMessage, HasFile;
 
     protected const MODEL = Product::class;
     protected const UPLOAD_PATH = "product\\products\\";
