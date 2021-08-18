@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::redirect('/', '/admin', 301);
 Route::group(['middleware' => ['auth', 'get.menu']], function () {
     Route::get('/admin', function () { return view('backend.pages.homepage'); });
 
