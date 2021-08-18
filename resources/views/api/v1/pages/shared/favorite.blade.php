@@ -1,6 +1,6 @@
 <tr>
     <td colspan="2">
-        <span class="lead d-block">Добавлегие в избранные</span>
+        <span class="lead font-weight-bold">Добавлегие в избранные</span>
     </td>
 </tr>
 <tr>

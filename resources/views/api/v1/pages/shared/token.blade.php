@@ -1,6 +1,6 @@
 <tr>
     <td colspan="2">
-        <span class="lead d-block">Авторизация для получения токена</span>
+        <span class="lead font-weight-bold">Авторизация для получения токена</span>
     </td>
 </tr>
 <tr>

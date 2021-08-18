@@ -1,6 +1,6 @@
 <tr>
     <td colspan="2">
-        <span class="lead d-block">Смена категории</span>
+        <span class="lead font-weight-bold">Смена категории</span>
     </td>
 </tr>
 <tr>

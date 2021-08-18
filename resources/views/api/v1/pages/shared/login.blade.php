@@ -1,6 +1,6 @@
 <tr>
     <td colspan="2">
-        <span class="lead d-block">Вход в личный кабинет</span>
+        <span class="lead font-weight-bold">Вход в личный кабинет</span>
     </td>
 </tr>
 <tr>

@@ -1,6 +1,6 @@
 <tr>
     <td colspan="2">
-        <span class="lead d-block">Регистрация</span>
+        <span class="lead font-weight-bold">Регистрация</span>
     </td>
 </tr>
 <tr>

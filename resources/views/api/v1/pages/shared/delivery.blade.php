@@ -1,6 +1,6 @@
 <tr>
     <td colspan="2">
-        <span class="lead">Страница "Доставка"</span>
+        <span class="lead font-weight-bold">Страница "Доставка"</span>
     </td>
 </tr>
 <tr>
