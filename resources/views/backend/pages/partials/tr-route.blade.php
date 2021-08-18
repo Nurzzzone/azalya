@@ -19,7 +19,7 @@
     </tr>
 @else
     <tr data-name="tableRow" data-href="{{ $route }}">
-        <td class="p-0">
+        <td class="p-0" @isset($colspan) colspan="{{$colspan}}" @endisset>
             <div class="pages__dropdown-item d-flex justify-content-between align-items-center p-3">
                 <span>{{ $name }}</span>
                 <span>&xrarr;</span>

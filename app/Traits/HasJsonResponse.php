@@ -34,7 +34,7 @@ trait HasJsonResponse
         return response()->json([
             'message'   => $message ?? 'Произошла ошибка! Пожалуйста, попробуйте еще раз',
             'status'    => $status ?? 500,
-        ])->setStatusCode($status);
+        ])->setStatusCode($status ?? 500);
     }
 
     /**

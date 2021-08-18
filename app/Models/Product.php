@@ -31,9 +31,27 @@ class Product extends Model
         'in_homepage' => 'boolean'
     ];
 
+    protected $appends = ['count', 'format', 'size'];
+    protected $hidden = ['pivot'];
+
+    public function getCountAttribute()
+    {
+        return ($this->pivot)? $this->pivot->count: null;
+    }
+
+    public function getFormatAttribute()
+    {
+        return ($this->pivot)? $this->pivot->format: null;
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getSizeAttribute()
+    {
+        return ($this->pivot)? $this->pivot->size: null;
     }
 
     public function formats()
@@ -51,9 +69,15 @@ class Product extends Model
         return $this->belongsToMany(User::class, 'user_has_favourite_products');
     }
 
-    public function types()
+    public function type()
     {
         return $this->belongsTo(Type::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsToMany(Order::class, 'order_has_products')
+            ->withPivot('count', 'format', 'size');
     }
 
     public function scopeFilter($query, $request)

@@ -31,7 +31,7 @@
                             </table>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-success" href="{{ route("backend.{$objects}.index") }}">@lang('buttons.back')</a>
+                            <a class="btn btn-success" href="{{ url()->previous() }}">@lang('buttons.back')</a>
                             <a class="btn btn-success" href="{{ route("backend.{$objects}.edit", $product->id) }}">@lang('buttons.edit')</a>
                         </div>
                     </div>
