@@ -19,25 +19,6 @@ class AuthController extends Controller
     protected const REGISTER_SUCCESS = 'Регистрация прошла успешно';
     protected const USER_NOT_FOUND = 'Пользователь не найден!';
 
-    public function getToken(LoginRequest $request)
-    {
-        try {
-            $credentials = $request->only('email', 'phone_number', 'password');
-            $user = User::where('email', $credentials['email'] ?? $credentials['phone_number'])->first();
-
-            if (is_null($user)) {
-                return $this->sendErrorMessage(self::USER_NOT_FOUND, 404);
-            }
-
-            if ($user->hasRole('admin') && $token = auth()->attempt($credentials)) {
-                return $this->sendSuccessMessageWithToken(['access_token' => "Bearer $token"]);
-            }
-        } catch (\Exception $exception) {
-            return $this->sendErrorMessage(self::ERROR, 500);
-        }
-        return $this->sendErrorMessage(self::WRONG_CREDENTIALS, 409);
-    }
-
     /**
      * @param LoginRequest $request
      * @return \Illuminate\Http\JsonResponse
@@ -52,13 +33,13 @@ class AuthController extends Controller
                 return $this->sendErrorMessage(self::USER_NOT_FOUND, 404);
             }
 
-            if (!Auth::attempt($credentials, $request['remember'])) {
+            if (!$token = auth()->attempt($credentials)) {
                 return $this->sendErrorMessage(self::WRONG_CREDENTIALS, 409);
             }
         } catch (\Exception $exception) {
             return $this->sendErrorMessage(self::ERROR, 500);
         }
-        return $this->sendSuccessMessage(['user' => $user], self::LOGIN_SUCCESS);
+        return $this->sendSuccessMessage(['user' => $user, 'access_token' => "Bearer $token"], self::LOGIN_SUCCESS);
     }
 
     /**
