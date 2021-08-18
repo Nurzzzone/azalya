@@ -10,7 +10,8 @@
 @php($route = 'about')
 @php($options = [
     'method'  => 'PATCH',
-    'url'     => route("backend.{$route}.update", $object->id)
+    'url'     => route("backend.{$route}.update", $object->id),
+    'enctype' => 'multipart/form-data'
 ])
 
 @section('content')
@@ -47,5 +48,4 @@
 @section('scripts')
     <script src="{{ asset('js/quill.js') }}"></script>
     <script src="{{ asset('js/upload-image.js') }}"></script>
-    <script src="{{ asset('js/translation.js') }}"></script>
 @endsection
