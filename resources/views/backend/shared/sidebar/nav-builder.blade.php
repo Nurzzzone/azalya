@@ -43,7 +43,7 @@
                 @if($menuel['name'] === 'pages') 
                     <li class="c-sidebar-nav-item">
                         <a class="c-sidebar-nav-link" href="{{ route('backend.orders.index') }}">
-                                <i class="cil-speedometer c-sidebar-nav-icon"></i>
+                                <i class="cil-book-open c-sidebar-nav-icon"></i>
                             @lang('pages.orders')
                         @if (!empty($order_count))
                             <span class="badge badge-success">{{ $order_count }}</span>
