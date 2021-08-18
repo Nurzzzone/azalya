@@ -25,18 +25,6 @@ class DeliveryController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view("backend.pages.{$this->route}.index", 
-        [
-            $this->object => (self::MODEL)::paginate(10),
-            'columns' => self::COLUMNS
-        ]);
-    }
-
-    /**
      * @param  Delivery $delivery
      * @return \Illuminate\Http\Response
      */
@@ -69,6 +57,6 @@ class DeliveryController extends Controller
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
-        return $this->flashSuccessMessage($request, "backend.{$this->route}.index");
+        return $this->flashSuccessMessage($request, "backend.{$this->route}.show");
     }
 }
