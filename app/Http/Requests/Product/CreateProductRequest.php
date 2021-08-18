@@ -35,8 +35,8 @@ class CreateProductRequest extends FormRequest
             'in_homepage' => ['nullable', 'boolean'],
             'type_id' => ['sometimes', 'integer'],
             'category_id' => ['required', 'integer'],
-            'format' => ['required'],
-            'size' => ['required']
+            'format' => ['required', 'array'],
+            'size' => ['required', 'array']
         ];
     }
 }
