@@ -22,7 +22,7 @@ class CreateContactsRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'value' => ['required', 'string', 'max:8000'],
-            'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg']
+            'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp']
         ];
     }
 }

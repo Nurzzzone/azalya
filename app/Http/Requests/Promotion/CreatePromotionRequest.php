@@ -22,7 +22,7 @@ class CreatePromotionRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:16000'],
-            'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg'],
+            'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp'],
             'is_active' => ['required', 'nullable']
         ];
     }

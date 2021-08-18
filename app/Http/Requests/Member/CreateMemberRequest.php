@@ -27,7 +27,7 @@ class CreateMemberRequest extends FormRequest
         return [
             'fullname' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
-            'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg'],
+            'image' => ['nullable', 'file', 'mimes:jpeg,jpg,png,svg'],
             'is_active' => ['required', 'boolean']
         ];
     }

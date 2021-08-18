@@ -22,7 +22,7 @@ class UpdatePromotionRequest extends FormRequest
         return [
             'name' => ['sometimes', 'string', 'max:255'],
             'description' => ['sometimes', 'string', 'max:16000'],
-            'image' => ['nullable', 'file', 'memes:jpeg,jpg,png,svg'],
+            'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp'],
             'is_active' => ['sometimes', 'nullable']
         ];
     }
