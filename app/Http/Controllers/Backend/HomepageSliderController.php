@@ -16,7 +16,7 @@ class HomepageSliderController extends Controller
 
     protected const MODEL = HomepageSlider::class;
     protected const THEADERS = ['fields.id', 'fields.name'];
-    protected const UPLOAD_PATH = "homepage\\slider";
+    protected const UPLOAD_PATH = "homepage\\slider\\";
     protected $route;
 
     public function __construct()

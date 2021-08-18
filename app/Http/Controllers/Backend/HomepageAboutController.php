@@ -52,7 +52,7 @@ class HomepageAboutController extends Controller
         try {
             $data = $request->validationData();
             $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $about->image, self::UPLOAD_PATH);
-            $about->update($request->validated());
+            $about->update($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
