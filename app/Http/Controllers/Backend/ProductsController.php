@@ -55,7 +55,7 @@ class ProductsController extends Controller
             $data['image'] = $this->uploadFile($request['image'], self::UPLOAD_PATH);
             $product = (self::MODEL)::create($data);
             $product->sizes()->attach($data['size']);
-            $product->formats()->attach($data['formats']);
+            $product->formats()->attach($data['format']);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
