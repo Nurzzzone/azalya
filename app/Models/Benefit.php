@@ -37,6 +37,6 @@ class Benefit extends Model
     public function scopeInProduct($query)
     {
         return $query
-            ->where('in_product', true)->get(5);
+            ->where('in_product', true)->take(5);
     }
 }
