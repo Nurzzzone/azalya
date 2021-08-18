@@ -21,6 +21,7 @@
                                     @include('api.v1.pages.shared.delivery')
                                     @include('api.v1.pages.shared.contacts')
                                     @include('api.v1.pages.shared.favorite')
+                                    @include('api.v1.pages.shared.user-favorite')
                                     @include('api.v1.pages.shared.category')
                                     @include('api.v1.pages.shared.checkout')
                                 </tbody>
