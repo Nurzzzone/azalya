@@ -52,5 +52,4 @@
 @section('scripts')
     <script src="{{ asset('js/quill.js') }}"></script>
     <script src="{{ asset('js/upload-image.js') }}"></script>
-    <script src="{{ asset('js/translation.js') }}"></script>
 @endsection

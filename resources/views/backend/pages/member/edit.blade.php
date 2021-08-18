@@ -2,6 +2,10 @@
 
 @section('title', trans('pages.prices.edit'))
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/quill.css') }}">
+@endsection
+
 @php($object = $member)
 @php($route = 'member')
 @php($options = [
@@ -35,4 +39,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('vendor-scripts')
+    <script src="{{ asset('js/vendors/quill/quill.min.js') }}"></script>
+    <script src="{{ asset('js/vendors/quill/highlight.min.js') }}"></script>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/quill.js') }}"></script>
+    <script src="{{ asset('js/upload-image.js') }}"></script>
 @endsection

@@ -35,3 +35,7 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('js/upload-image.js') }}"></script>
+@endsection
