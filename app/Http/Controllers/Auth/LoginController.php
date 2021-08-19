@@ -33,7 +33,7 @@ class LoginController extends Controller
         ]);
 
         $user = User::where('email', $credentials['email'])->first();
-        if ($user->hasRole('admin') && Auth::attempt($credentials)) {
+        if ($user !== null && $user->hasRole('admin') && Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->to('/admin');
         }

@@ -8,6 +8,8 @@ return [
     'phone_number' => 'Номер телефона',
     'email_address' => 'Электронная почта',
     'password'  => 'Пароль',
+    'password.new' => 'Новый пароль',
+    'password.old' => 'Текущий пароль',
     'image' => 'Изображение',
     'icon' => 'Иконка',
     'logo' => 'Логотип',

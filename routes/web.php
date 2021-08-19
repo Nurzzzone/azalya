@@ -7,9 +7,10 @@ Auth::routes();
 
 Route::redirect('/', '/admin', 301);
 Route::group(['middleware' => ['auth', 'get.menu']], function () {
-    Route::get('/admin', function () { return view('backend.pages.homepage'); });
-
+    Route::get('/admin', function () { return view('backend.pages.dashboard.index'); });
+    
     Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'backend.'], function() {
+        Route::patch('/user/{user}/password', 'UserController@update')->name('password.update');
         include_route_files(__DIR__ . '/backend/');
     });
 

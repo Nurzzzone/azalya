@@ -4,11 +4,13 @@ namespace App\Traits;
 
 trait HasFlashMessage
 {
-    public function flashSuccessMessage($request, $route, $message = null)
+    public function flashSuccessMessage($request, $route = null, $message = null)
     {
         $request->session()->flash('message', $message ?? "Операция выполнена успешно!");
-        return redirect()
-            ->route($route);
+        if ($route !== null) {
+            return redirect()->route($route);
+        }
+        return redirect()->back();
     }
 
     public function flashErrorMessage($request, $exception, $message = null)

@@ -9,6 +9,7 @@
     @php
         $options = [
             'class'       => ['form-control', $errors->has($field)? 'border-danger' : ''],
+            'disabled'    => isset($disabled)? 'disabled': null,
             'required'    => $required ?? false,
             'placeholder' => trans($locale ?? 'title')
         ];
