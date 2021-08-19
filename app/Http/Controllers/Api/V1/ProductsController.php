@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\Size;
+use App\Models\Type;
 use App\Models\User;
+use App\Models\Format;
 use App\Models\Benefit;
 use App\Models\Product;
 use App\Models\Category;
@@ -54,6 +57,18 @@ class ProductsController extends Controller
             return $this->sendErrorMessage();
         }
         return $this->sendSuccessMessage();
+    }
+
+    public function getFilters()
+    {
+        try {
+            $formats = Format::all(['name', 'slug']);
+            $sizes = Size::all(['name', 'slug']);
+            $types = Type::all(['name', 'slug']);
+        } catch (\Throwable $th) {
+            return $this->sendErrorMessage();
+        }
+        return $this->sendSuccessMessage(compact('formats', 'sizes', 'types'));
     }
 
     /**
