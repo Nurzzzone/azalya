@@ -65,10 +65,12 @@ class ProductsController extends Controller
             $formats = Format::all(['name', 'slug']);
             $sizes = Size::all(['name', 'slug']);
             $types = Type::all(['name', 'slug']);
-        } catch (\Throwable $th) {
+            $price['min'] = Product::min('price');
+            $price['max'] = Product::max('price');
+        } catch (\Exception $exception) {
             return $this->sendErrorMessage();
         }
-        return $this->sendSuccessMessage(compact('formats', 'sizes', 'types'));
+        return $this->sendSuccessMessage(compact('formats', 'sizes', 'types', 'price'));
     }
 
     /**
