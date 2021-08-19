@@ -22,6 +22,7 @@
                                     @include('api.v1.pages.shared.favorite')
                                     @include('api.v1.pages.shared.user-favorite')
                                     @include('api.v1.pages.shared.category')
+                                    @include('api.v1.pages.shared.filter')
                                     @include('api.v1.pages.shared.checkout')
                                 </tbody>
                             </table>

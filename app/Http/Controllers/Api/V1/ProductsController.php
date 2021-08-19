@@ -43,6 +43,9 @@ class ProductsController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function toggleFavorite(Product $product, Request $request)
     {
         try {
@@ -53,6 +56,9 @@ class ProductsController extends Controller
         return $this->sendSuccessMessage();
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function filter(Request $request)
     {
         $products = (self::MODEL)::filter($request)

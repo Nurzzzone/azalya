@@ -6,9 +6,9 @@
                 <b class="d-block">{{ $param['name'] }}</b>
                 <div class="px-4">
                     <div class="border-bottom pb-1">
-                        <em>{{ $param['type'] }}</em> |
+                        <em>{{ $param['type'] }}</em>
                         @if ($param['required'])
-                            <span class="text-danger">required</span>
+                        | <span class="text-danger">required</span>
                         @endif
                     </div>
                     <p>{{ $param['description'] }}</p>
