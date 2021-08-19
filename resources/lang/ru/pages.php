@@ -25,5 +25,6 @@ return [
     'benefit' => 'Преймущества',
     'common' => 'Общее',
     'promotions' => 'Акции',
-    'orders' => 'Заказы'
+    'orders' => 'Заказы',
+    'general-settings' => 'Основные'
 ];

@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-//use database\seeds\UsersAndNotesSeeder;
-//use database\seeds\MenusTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,6 +24,7 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             HomepageAboutSeeder::class,
             ProductAboutSeeder::class,
+            GeneralSettingsTableSeeder::class,
         ]);
     }
 }

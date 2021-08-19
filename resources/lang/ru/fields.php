@@ -15,6 +15,8 @@ return [
     'logo' => 'Логотип',
     'twitter' => 'Twitter',
     'facebook' => 'Facebook',
+    'instagram' => 'Instagram',
+    'whatsapp' => "WhatsApp",
     'youtube' => 'Youtube',
     'price' => 'Стоимость',
     'contract' => 'Контракт',
