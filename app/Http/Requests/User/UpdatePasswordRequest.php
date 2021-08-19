@@ -24,7 +24,7 @@ class UpdatePasswordRequest extends FormRequest
     {
         return [
             'password' => ['required', 'filled', 'string', 'min:6', 'max:90', 'current_password'],
-            'new_password' => ['required', 'filled', 'string', 'max:90', Password::min(6)],
+            'new_password' => ['required', 'filled', 'string', 'max:90', 'min:6', 'different:password'],
         ];
     }
 
@@ -38,5 +38,12 @@ class UpdatePasswordRequest extends FormRequest
         }
 
         return $validated;
+    }
+
+    public function messages()
+    {
+        return [
+            'new_password.different' => trans('validation.password_different')
+        ];
     }
 }
