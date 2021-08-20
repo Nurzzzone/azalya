@@ -17,7 +17,8 @@ trait HasFile
             $file_extension = $file->getClientOriginalExtension();
             $file_name = date('Ymd').'_'.time().'.'.$file_extension;
             Storage::disk('public')->put($folder . $file_name, file_get_contents($file));
-            return "storage\\$folder" . $file_name;
+            $folder = str_replace('\\', '/', $folder);
+            return "storage/$folder" . $file_name;
         }
     }
 
