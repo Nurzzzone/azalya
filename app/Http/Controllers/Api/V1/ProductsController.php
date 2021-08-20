@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Traits\HasJsonResponse;
 use App\Http\Resources\ProductCollection;
 use App\Http\Controllers\Api\V1\Controller;
+use App\Http\Resources\ProductResource;
 
 class ProductsController extends Controller
 {
@@ -40,7 +41,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         return $this->sendSuccessMessage([
-            'product' => $product->first(['name', 'image', 'price', 'discount', 'description', 'in_stock', 'is_popular']),
+            'product' => (new ProductResource($product->first())),
             'benefits' => Benefit::inProduct()->get(['name', 'image']),
             'interesting' => Product::where('is_active', true)->take(9),
         ]);
