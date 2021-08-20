@@ -40,8 +40,8 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         return $this->sendSuccessMessage([
-            'product' => $product,
-            'benefits' => Benefit::inProduct(),
+            'product' => $product->first(['name', 'image', 'price', 'discount', 'description', 'in_stock', 'is_popular']),
+            'benefits' => Benefit::inProduct()->get(['name', 'image']),
             'interesting' => Product::where('is_active', true)->take(9),
         ]);
     }

@@ -18,9 +18,9 @@ class AboutController extends Controller
     public function page()
     {
         return $this->sendSuccessMessage([
-            'about' => About::first(),
+            'about' => About::first(['name', 'description', 'image']),
             'benefits' => Benefit::inAbout()->get(['name', 'image']),
-            'members' => Member::all()
+            'members' => Member::all(['fullname', 'position', 'image'])
         ]);
     }
 }

@@ -17,8 +17,8 @@ class ContactsController extends Controller
     public function page()
     {
         return $this->sendSuccessMessage([
-            'contacts' => Contacts::all(),
-            'map' => Map::first()->value,
+            'contacts' => Contacts::all(['name', 'value', 'image']),
+            'map' => Map::first(['value'])->value,
         ]);
     }
 }
