@@ -139,8 +139,8 @@ class MenusTableSeeder extends Seeder
 
         $this->beginDropdown('admin', 'settings', 'cil-settings');
             $this->insertLink('admin', 'general-settings', 'admin/general');
-            $this->insertLink('admin', 'users', '/users');
-            $this->insertLink('admin', 'email', '/mail');
+            // $this->insertLink('admin', 'users', '/users');
+            // $this->insertLink('admin', 'email', '/mail');
         $this->endDropdown();
 
         $this->joinAllByTransaction(); ///   <===== Must by use on end of this seeder
