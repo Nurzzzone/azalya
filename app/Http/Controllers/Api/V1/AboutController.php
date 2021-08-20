@@ -19,7 +19,7 @@ class AboutController extends Controller
     {
         return $this->sendSuccessMessage([
             'about' => About::first(),
-            'benefits' => Benefit::inAbout(),
+            'benefits' => Benefit::inAbout()->get(['name', 'image']),
             'members' => Member::all()
         ]);
     }

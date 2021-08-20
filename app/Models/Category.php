@@ -23,7 +23,6 @@ class Category extends Model
     public function scopeInHome($query)
     {
         return $query
-            ->where('is_active', true)
             ->where('in_homepage', true)->take(4);
     }
 }

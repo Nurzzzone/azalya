@@ -22,10 +22,10 @@ class HomepageController extends Controller
     {
         return $this->sendSuccessMessage([
             'slider' => HomepageSlider::all(),
-            'benefits' => Benefit::inHome(),
+            'benefits' => Benefit::inHome()->get(['name', 'image']),
             'cards' => HomepageCard::all(),
-            'categories' => Category::inHome(),
-            'products' => Product::inHome(),
+            'categories' => Category::inHome()->get(['name', 'slug']),
+            'products' => Product::inHome()->paginate(6, ['name', 'image', 'price', 'discount', 'description', 'in_stock', 'is_popular', 'formats', 'sizes']),
             'about' => HomepageAbout::first(),
         ]);
     }
