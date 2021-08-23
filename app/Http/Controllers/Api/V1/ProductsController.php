@@ -41,7 +41,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         return $this->sendSuccessMessage([
-            'product' => (new ProductResource($product->first())),
+            'product' => (new ProductResource($product)),
             'benefits' => Benefit::inProduct()->get(['name', 'image']),
             'interesting' => Product::where('is_active', true)->take(9),
         ]);
