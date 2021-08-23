@@ -19,7 +19,7 @@ class UserController extends Controller
 
 
     /**
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function list(Request $request)
     {
@@ -34,6 +34,9 @@ class UserController extends Controller
         return $products;
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function orderHistory(Request $request)
     {
         try {
@@ -47,5 +50,20 @@ class UserController extends Controller
         return (new OrderCollection($this->paginate($orders, self::PER_PAGE)))
                 ->response()
                 ->setEncodingOptions(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function me(Request $request)
+    {
+        $user = User::where('access_token', $request->bearerToken())
+            ->first(['name', 'email', 'phone_number', 'address', 'access_token']);
+
+        if ($user !== null) {
+            return $this->sendSuccessMessage(compact('user'));
+        }
+
+        return $this->sendErrorMessage('Пользователь не найден!');
     }
 }
