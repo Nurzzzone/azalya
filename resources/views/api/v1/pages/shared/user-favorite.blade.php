@@ -6,7 +6,7 @@
 <tr>
     <td colspan="2">
         <div class="row">
-            @include('api.v1.shared.request', ['method' => 'GET', 'endpoint' => 'api/v1/user/:user_id/favorites'])
+            @include('api.v1.shared.request', ['method' => 'GET', 'endpoint' => 'api/v1/user/favorites'])
             <div class="col-6 border-left">
                 @include('api.v1.shared.response', ['response' => [
                     ['name' => 'message', 'message' => '"Операция прошла успешно!"'],
