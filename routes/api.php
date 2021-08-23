@@ -28,6 +28,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\\V1'], function() {
         Route::post('/products/filter', 'ProductsController@filter');
         Route::post('/products/{product}/favorites', 'ProductsController@toggleFavorite');
         Route::get('/user/favorites', 'UserController@list');
-        Route::post('/checkout', 'OrderController@checkout');
     });
+
+    Route::post('/checkout', 'OrderController@checkout');
 });
