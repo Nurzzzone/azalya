@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Api\V1;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Traits\HasJsonResponse;
 use App\Traits\HasCustomPaginator;
 use App\Http\Resources\ProductCollection;
 use App\Http\Controllers\Api\V1\Controller;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\Order\OrderCollection;
-use App\Traits\HasJsonResponse;
 
 class UserController extends Controller
 {
@@ -65,5 +66,20 @@ class UserController extends Controller
         }
 
         return $this->sendErrorMessage('Пользователь не найден!');
+    }
+
+    /**
+     * @param UpdateUserRequest
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(UpdateUserRequest $request)
+    {
+        try {
+            $user = User::where('access_token', $request->bearerToken())->first();
+            $user->update($request->validated());
+        } catch (\Exception $exception) {
+            return $this->sendErrorMessage();
+        }
+        return $this->sendSuccessMessage(compact('user'));
     }
 }
