@@ -53,7 +53,9 @@ class ProductsController extends Controller
     public function toggleFavorite(Product $product, Request $request)
     {
         try {
-            User::authenticated($request)->toggleFavorite($product);
+            User::where('access_token', $request->bearerToken())
+                ->first()
+                ->toggleFavorite($product);
         } catch (\Exception $exception) {
             return $this->sendErrorMessage();
         }

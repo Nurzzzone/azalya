@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('menuroles');
             $table->text('address')->nullable();
+            $table->text('access_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\User;
 use App\Traits\HasJsonResponse;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Controllers\Api\V1\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
@@ -39,7 +38,8 @@ class AuthController extends Controller
         } catch (\Exception $exception) {
             return $this->sendErrorMessage(self::ERROR, 500);
         }
-        return $this->sendSuccessMessage(['user' => $user, 'access_token' => "Bearer $token"], self::LOGIN_SUCCESS);
+        $user->update(['access_token' => $token]);
+        return $this->sendSuccessMessage(['user' => $user], self::LOGIN_SUCCESS);
     }
 
     /**

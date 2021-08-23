@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\User;
 use App\Models\Product;
-use App\Http\Controllers\Api\V1\Controller;
-use App\Http\Resources\ProductCollection;
+use Illuminate\Http\Request;
 use App\Traits\HasCustomPaginator;
+use App\Http\Resources\ProductCollection;
+use App\Http\Controllers\Api\V1\Controller;
 
 class UserController extends Controller
 {
@@ -15,9 +16,11 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Http\Response
      */
-    public function list(User $user)
+    public function list(Request $request)
     {
-        $products = $user->favorite(Product::class);
+        $products = User::where('access_token', $request->bearerToken())
+            ->first()
+            ->favorite(Product::class);
         if ($products->isNotEmpty()) {
             return (new ProductCollection($this->paginate($products, 9)))
                 ->response()

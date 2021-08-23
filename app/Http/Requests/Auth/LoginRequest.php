@@ -37,7 +37,7 @@ class LoginRequest extends FormRequest
         if ($this->has('email') || $this->has('phone_number')) {
             $user = User::where("email", $this->email)
                 ->orWhere('phone_number', $this->phone_number)
-                ->first(['name', 'email', 'phone_number', 'address']);
+                ->first(['id', 'name', 'email', 'phone_number', 'address']);
 
             $request['user'] = $user ?? null;
         }
