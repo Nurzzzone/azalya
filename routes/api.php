@@ -25,12 +25,12 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\\V1'], function() {
     Route::get('/products/filter', 'ProductsController@getFilters');
 
     Route::group(['middleware' => ['jwt', 'auth:api']], function() {
-        Route::post('/products/filter', 'ProductsController@filter');
         Route::post('/products/{product}/favorites', 'ProductsController@toggleFavorite');
         Route::get('/user/favorites', 'UserController@list');
         Route::get('/user/orders', 'UserController@orderHistory');
         Route::get('/user', 'UserController@me');
     });
 
+    Route::post('/products/filter', 'ProductsController@filter');
     Route::post('/checkout', 'OrderController@checkout');
 });

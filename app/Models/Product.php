@@ -95,20 +95,40 @@ class Product extends Model
         }
 
         if ($request->has('type')) {
-            $type = Type::where('slug', $request['type'])->first();
-            $query->where('type_id', $type->id);
+            if (str_contains($request['type'], ',')) {
+                $request['type'] = explode(',', $request['type']);
+                $types = Type::whereIn('slug', $request['type'])->pluck('id');
+                $query->whereIn('type_id', $types);
+            } else {
+                $type = Type::where('slug', $request['type'])->first();
+                $query->where('type_id', $type->id);
+            }
         }
 
         if ($request->has('size')) {
-            $size = Size::where('slug', $request['size'])->first();
-            $query->whereHas('sizes', fn($query) => 
-                $query->where('sizes.id', $size->id));
+            if (str_contains($request['size'], ',')) {
+                $request['size'] = explode(',', $request['size']);
+                $sizes = Size::whereIn('slug', $request['size'])->pluck('id');
+                $query->whereHas('sizes', fn($query) => 
+                    $query->whereIn('sizes.id', $sizes));
+            } else {
+                $size = Size::where('slug', $request['size'])->first();
+                $query->whereHas('sizes', fn($query) => 
+                    $query->where('sizes.id', $size->id));
+            }
         }
 
         if ($request->has('format')) {
-            $format = Format::where('slug', $request['format'])->first();
-            $query->whereHas('formats', fn($query) => 
-                $query->where('formats.id', $format->id));
+            if (str_contains($request['format'], ',')) {
+                $request['format'] = explode(',', $request['format']);
+                $formats = Format::whereIn('slug', $request['format'])->pluck('id');
+                $query->whereHas('formats', fn($query) => 
+                    $query->whereIn('formats.id', $formats));
+            } else {
+                $format = Format::where('slug', $request['format'])->first();
+                $query->whereHas('formats', fn($query) => 
+                    $query->where('formats.id', $format->id));
+            }
         }
 
         return $query;

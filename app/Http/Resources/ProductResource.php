@@ -24,8 +24,9 @@ class ProductResource extends JsonResource
             'is_popular' => $this->is_popular,
             'in_homepage' => $this->in_homepage,
             'category' => ['name' => $this->category->name, 'slug' => $this->category->slug],
+            'type' => ['name' => $this->type->name, 'slug' => $this->type->slug],
             'formats' => $this->formats()->get(['name', 'slug']),
-            'sizes' => $this->sizes()->get(['name', 'slug'])
+            'sizes' => $this->sizes()->get(['name', 'slug']),
         ];
     }
 }
