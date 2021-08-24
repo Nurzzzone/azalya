@@ -23,6 +23,7 @@ class UpdateUserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'string', 'max:40'],
             'phone_number' => ['required', 'string', 'max:20'],
+            'address' => ['required', 'string', '4000']
         ];
     }
 }
