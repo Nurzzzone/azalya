@@ -8,8 +8,9 @@ use App\Models\Category;
 use App\Models\HomepageCard;
 use App\Models\HomepageAbout;
 use App\Models\HomepageSlider;
-use App\Http\Controllers\Api\V1\Controller;
 use App\Traits\HasJsonResponse;
+use App\Http\Controllers\Api\V1\Controller;
+use App\Http\Resources\ProductCollection;
 
 class HomepageController extends Controller
 {
@@ -25,7 +26,7 @@ class HomepageController extends Controller
             'benefits' => Benefit::inHome()->get(['name', 'image']),
             'cards' => HomepageCard::all(['name', 'image']),
             'categories' => Category::inHome()->get(['name', 'slug']),
-            'products' => Product::inHome()->paginate(6, ['name', 'image', 'price', 'discount', 'description', 'in_stock', 'is_popular']),
+            'products' => (new ProductCollection(Product::inHome()->take(6)->get())),
             'about' => HomepageAbout::first(['name', 'description', 'image']),
         ]);
     }
