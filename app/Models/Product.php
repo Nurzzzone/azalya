@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Pipeline\Pipeline;
 use Illuminate\Database\Eloquent\Model;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -80,38 +81,17 @@ class Product extends Model
             ->withPivot('count', 'format', 'size');
     }
 
-    public function scopeFilter($query, $request)
+    public function scopeFilter($query)
     {
-        $category = Category::where('slug', $request['category'])->first();
-        $query->where('category_id', $category->id);
-
-        if ($request->has('price_from') && $request->has('price_to')) {
-            $price_between = $request->only('price_from', 'price_to');
-            $query->whereBetween("price", $price_between);
-        } elseif ($request->has('price_from')) {
-            $query->where('price', '>=', $request['price_from']);
-        } elseif ($request->has('price_to')) {
-            $query->where('price', '<=', $request['price_to']);
-        }
-
-        if ($request->has('type')) {
-            $types = Type::whereIn('slug', $request['type'])->pluck('id');
-            $query->whereIn('type_id', $types);
-        }
-
-        if ($request->has('size')) {
-            $sizes = Size::whereIn('slug', $request['size'])->pluck('id');
-            $query->whereHas('sizes', fn($query) => 
-                $query->whereIn('sizes.id', $sizes));
-        }
-
-        if ($request->has('format')) {
-            $format = Format::where('slug', $request['format'])->first();
-            $query->whereHas('formats', fn($query) => 
-                $query->where('formats.id', $format->id));
-        }
-
-        return $query;
+        return app(Pipeline::class)
+            ->send($query)
+            ->through([
+                \App\QueryFilters\CategoryFilter::class,
+                \App\QueryFilters\PriceFilter::class,
+                \App\QueryFilters\TypeFilter::class,
+                \App\QueryFilters\SizeFilter::class,
+                \App\QueryFilters\ActiveFilter::class,
+            ])->thenReturn();
     }
 
     public function scopeInHome($query)

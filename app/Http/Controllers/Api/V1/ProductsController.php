@@ -79,10 +79,9 @@ class ProductsController extends Controller
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function filter(Request $request)
+    public function filter()
     {
-        $products = (self::MODEL)::filter($request)
-            ->where('is_active', true)
+        $products = (self::MODEL)::filter()
             ->paginate(9);
         return (new ProductCollection($products))
             ->response()
