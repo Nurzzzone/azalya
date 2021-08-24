@@ -16,6 +16,7 @@
                                     @include('api.v1.pages.shared.home')
                                     @include('api.v1.pages.shared.products')
                                     @include('api.v1.pages.shared.product')
+                                    @include('api.v1.pages.shared.products-by-id')
                                     @include('api.v1.pages.shared.about')
                                     @include('api.v1.pages.shared.delivery')
                                     @include('api.v1.pages.shared.contacts')

@@ -87,4 +87,17 @@ class ProductsController extends Controller
             ->response()
             ->setEncodingOptions(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getProductsById(Request $request)
+    {
+        $products = Product::whereIn('id', $request->products)
+            ->get();
+
+        return (new ProductCollection($products))
+            ->response()
+            ->setEncodingOptions(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    }
 }

@@ -32,6 +32,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\\V1'], function() {
         Route::post('/user', 'UserController@update');
     });
 
+    Route::post('/products/get', 'ProductsController@getProductsById');
     Route::post('/products/filter', 'ProductsController@filter');
     Route::post('/checkout', 'OrderController@checkout');
 });

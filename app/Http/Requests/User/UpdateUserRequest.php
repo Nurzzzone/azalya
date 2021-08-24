@@ -23,7 +23,7 @@ class UpdateUserRequest extends FormRequest
             'name' => ['sometimes', 'string', 'max:255'],
             'email' => ['sometimes', 'email', 'string', 'max:40', 'unique:users'],
             'phone_number' => ['sometimes', 'string', 'max:20', 'unique:users'],
-            'address' => ['sometimes', 'string', '4000']
+            'address' => ['sometimes', 'string', 'max:4000']
         ];
     }
 }
