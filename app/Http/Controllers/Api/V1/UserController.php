@@ -75,7 +75,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request)
     {
         try {
-            $user = User::where('access_token', $request->bearerToken())->first();
+            $user = User::where('access_token', $request->bearerToken())->first(['name', 'email', 'phone_number', 'address', 'access_token']);
             $user->update($request->validated());
         } catch (\Exception $exception) {
             return $this->sendErrorMessage();
