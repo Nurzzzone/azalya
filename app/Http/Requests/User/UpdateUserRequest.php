@@ -20,10 +20,10 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'string', 'max:40'],
-            'phone_number' => ['required', 'string', 'max:20'],
-            'address' => ['required', 'string', '4000']
+            'name' => ['sometimes', 'string', 'max:255'],
+            'email' => ['sometimes', 'email', 'string', 'max:40'],
+            'phone_number' => ['sometimes', 'string', 'max:20'],
+            'address' => ['sometimes', 'string', '4000']
         ];
     }
 }

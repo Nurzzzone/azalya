@@ -10,6 +10,7 @@
                 ['name' => 'name', 'type' => 'string', 'required' => true, 'description' => 'ФИО пользователя'], 
                 ['name' => 'phone_number', 'type' => 'string', 'required' => true, 'description' => 'Номер телефона пользователя'], 
                 ['name' => 'email', 'type' => 'string', 'required' => true, 'description' => 'Почта пользователя'],
+                ['name' => 'email', 'type' => 'string', 'required' => true, 'description' => 'Адресс пользователя'],
             ]])
             <div class="col-6 border-left">
                 @include('api.v1.shared.response', ['response' => [
