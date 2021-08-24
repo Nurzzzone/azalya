@@ -6,7 +6,7 @@
 <tr>
     <td colspan="2">
         <div class="row">
-            @include('api.v1.shared.request', ['method' => 'POST', 'endpoint' => 'api/v1/user', 'params' => [
+            @include('api.v1.shared.request', ['method' => 'POST', 'endpoint' => 'api/v1/products/get', 'params' => [
                 ['name' => 'products', 'type' => 'array', 'required' => true, 'description' => 'ID продуктов'], 
             ]])
             <div class="col-6 border-left">
