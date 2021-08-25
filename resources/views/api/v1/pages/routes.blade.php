@@ -13,6 +13,7 @@
                                 <tbody>
                                     @include('api.v1.pages.shared.login')
                                     @include('api.v1.pages.shared.register')
+                                    @include('api.v1.pages.shared.token-validate')
                                     @include('api.v1.pages.shared.home')
                                     @include('api.v1.pages.shared.products')
                                     @include('api.v1.pages.shared.product')

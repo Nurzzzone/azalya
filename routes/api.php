@@ -9,6 +9,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\\V1'], function() {
         Route::post('/register', 'AuthController@register');
         Route::post('/login', 'AuthController@login');
         Route::post('/reset', 'AuthController@reset');
+        Route::get('/validate/token', 'AuthController@validateToken');
     });
 
     Route::group(['prefix' => 'page'], function() {
