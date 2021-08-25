@@ -49,7 +49,7 @@ class CreateOrderRequest extends FormRequest
             $carry = $product['count'] + $carry;
             return $carry;
         }, 0);
-        $latestOrder = Order::orderBy('created_at','DESC')->first()->id ?? 0;
+        $latestOrder = Order::orderBy('id', 'DESC')->first()->id ?? 0;
         $request['code'] = str_pad($latestOrder + 1, 7, "0", STR_PAD_LEFT);
         $request['status'] = self::ORDER_CREATED;
         $request['user_id'] = User::where('access_token', $this->bearerToken())->first()->id;
