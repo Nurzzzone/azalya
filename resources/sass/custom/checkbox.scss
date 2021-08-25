@@ -9,8 +9,11 @@
         display: none;
         cursor: pointer;
 
-        &:checked label:after {
-
+        &:checked {
+            background-color: transparent;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none; 
         }
     }
 
@@ -44,5 +47,9 @@
         border: solid #303c54;
         border-width: 0 2px 2px 0;
         transform: rotate(45deg);
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none; 
     }
 }
