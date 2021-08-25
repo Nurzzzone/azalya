@@ -21,7 +21,6 @@
                                     @include('backend.pages.partials.tr-text', ['data' => $object->time, 'locale' => 'fields.time', 'tr' => 'text'])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->delivery, 'locale' => 'fields.delivery', 'tr' => 'text'])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->status, 'locale' => 'fields.status', 'tr' => 'text'])
-                                    @include('backend.pages.partials.tr-text', ['data' => $object->comment, 'locale' => 'fields.order.comment', 'tr' => 'textarea'])
                                 </tbody>
                             </table>
                             <h4 class="mt-4">Получатель</h4>
@@ -30,6 +29,7 @@
                                     @include('backend.pages.partials.tr-text', ['data' => $object->reciever->name, 'locale' => 'fields.fullname', 'tr' => 'text'])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->reciever->phone_number, 'locale' => 'fields.phone_number', 'tr' => 'text'])
                                     @include('backend.pages.partials.tr-text', ['data' => $object->reciever->email, 'locale' => 'fields.email_address', 'tr' => 'text'])
+                                    @include('backend.pages.partials.tr-text', ['data' => $object->reciever->comment, 'locale' => 'fields.order.comment', 'tr' => 'textarea'])
                                 </tbody>
                             </table>
 
