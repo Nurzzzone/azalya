@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             FormatSeeder::class,
             SizeSeeder::class,
             TypesSeeder::class,
+            ProductTableSeeder::class,
             MapSeeder::class,
             DeliverySeeder::class,
             AboutSeeder::class,

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Product;
 
+use App\Models\Size;
+use App\Models\Format;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateProductRequest extends FormRequest
@@ -17,8 +19,6 @@ class CreateProductRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
      * @return array
      */
     public function rules()
@@ -35,8 +35,8 @@ class CreateProductRequest extends FormRequest
             'in_homepage' => ['nullable', 'boolean'],
             'type_id' => ['sometimes', 'integer'],
             'category_id' => ['required', 'integer'],
-            'format' => ['required', 'array'],
-            'size' => ['required', 'array']
+            'format' => ['nullable', 'array'],
+            'size' => ['nullable', 'array']
         ];
     }
 }

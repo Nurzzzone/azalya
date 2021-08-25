@@ -54,8 +54,8 @@ class ProductsController extends Controller
             $data = $request->validationData();
             $data['image'] = $this->uploadFile($request['image'], self::UPLOAD_PATH);
             $product = (self::MODEL)::create($data);
-            $product->sizes()->attach($data['size']);
-            $product->formats()->attach($data['format']);
+            $product->sizes()->attach($data['size'] ?? [Size::where('slug', 's')->first()->id]);
+            $product->formats()->attach($data['format'] ?? [Format::where('slug', 'lenta')->first()->id]);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
