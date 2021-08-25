@@ -75,11 +75,11 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request)
     {
         try {
-            $user = User::where('access_token', $request->bearerToken())->first(['name', 'email', 'phone_number', 'address', 'access_token']);
+            $user = User::where('access_token', $request->bearerToken());
             $user->update($request->validated());
         } catch (\Exception $exception) {
             return $this->sendErrorMessage();
         }
-        return $this->sendSuccessMessage(compact('user'));
+        return $this->sendSuccessMessage(['user' => $user->first(['name', 'email', 'phone_number', 'address', 'access_token'])]);
     }
 }
