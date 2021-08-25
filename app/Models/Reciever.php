@@ -14,6 +14,7 @@ class Reciever extends Model
         'email',
         'phone_number',
         'order_id',
+        'comment'
     ];
 
     public function order()

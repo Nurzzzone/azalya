@@ -37,8 +37,8 @@ class CreateOrderRequest extends FormRequest
             'reciever.name' => ['required', 'string', 'max:255'],
             'reciever.phone_number' => ['required', 'string', 'max:255'],
             'reciever.email' => ['required', 'string', 'email'],
+            'reciever.comment' => ['required', 'string', 'max:8000'],
             'total_price' => ['required', 'numeric'],
-            'comment' => ['required', 'string', 'max:8000'],
         ];
     }
 

@@ -22,7 +22,6 @@ class CreateOrdersTable extends Migration
             $table->string('time', 255);
             $table->unsignedBigInteger('total_price');
             $table->string('delivery');
-            $table->text('comment');
             $table->string('status', 255);
             $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
