@@ -67,3 +67,12 @@ textarea{
     transition: unset;
     background-color: rgba(0, 0, 21, 0.075);
 }
+
+
+#accordion {
+    div[type='button'] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+}
