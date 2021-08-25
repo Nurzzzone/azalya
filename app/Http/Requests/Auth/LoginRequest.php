@@ -41,6 +41,10 @@ class LoginRequest extends FormRequest
 
             $request['user'] = $user ?? null;
         }
+
+        if (!$this->has('remember')) {
+            $request['remember'] = false;
+        }
         return $request;
     }
 }
