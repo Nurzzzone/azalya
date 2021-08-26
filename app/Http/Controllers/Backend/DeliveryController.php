@@ -53,7 +53,7 @@ class DeliveryController extends Controller
         try {
             $data = $request->validationData();
             $data['image'] = $this->updateImage($data['image'] ?? null, $data['previous_image'], $delivery->image, self::UPLOAD_PATH);
-            $delivery->update($request->validated());
+            $delivery->update($data);
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
