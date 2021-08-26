@@ -27,7 +27,7 @@ class CreateProductRequest extends FormRequest
             'name' => ['required', 'filled', 'string', 'max:255'],
             'description' => ['required', 'filled', 'string', 'max:16000'],
             'price' => ['required', 'filled', 'numeric'],
-            'discount' => ['nullable', 'numeric'],
+            'discount' => ['nullable', 'numeric', 'between:0,100'],
             'image' => ['nullable', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp'],
             'is_active' => ['nullable', 'boolean'],
             'in_stock' => ['nullable', 'boolean'],
