@@ -9,7 +9,7 @@ class CategoryFilter
 {
     public function handle($request, Closure $next)
     {
-        if (!request()->has('category')) {
+        if (!request()->has('category') && request()->isNotFilled('category')) {
             return $next($request);
         }
 

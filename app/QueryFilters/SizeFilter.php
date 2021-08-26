@@ -4,7 +4,6 @@ namespace App\QueryFilters;
 
 use Closure;
 use App\Models\Size;
-use App\Models\Format;
 
 class SizeFilter
 {
@@ -12,10 +11,10 @@ class SizeFilter
     {
         $builder = $next($request);
 
-        if (request()->has('format')) {
-            $format = Format::where('slug', request('format'))->first();
-            $builder->whereHas('formats', fn($query) => 
-                $query->where('formats.id', $format->id));
+        if (request()->has('format') && request()->filled('size')) {
+            $format = Size::where('slug', request('size'))->first();
+            $builder->whereHas('sizes', fn($query) => 
+                $query->where('sizes.id', $format->id));
         }
 
         return $builder;

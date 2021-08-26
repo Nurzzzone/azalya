@@ -11,7 +11,7 @@ class TypeFilter
     {
         $builder = $next($request);
 
-        if (request()->has('type')) {
+        if (request()->has('type') && request()->filled('type')) {
             $types = Type::whereIn('slug', request('type'))->pluck('id');
             $builder->whereIn('type_id', $types);
         }

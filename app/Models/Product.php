@@ -90,6 +90,7 @@ class Product extends Model
                 \App\QueryFilters\PriceFilter::class,
                 \App\QueryFilters\TypeFilter::class,
                 \App\QueryFilters\SizeFilter::class,
+                \App\QueryFilters\FormatFilter::class,
                 \App\QueryFilters\ActiveFilter::class,
             ])->thenReturn();
     }
