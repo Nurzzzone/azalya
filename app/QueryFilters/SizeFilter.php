@@ -11,7 +11,7 @@ class SizeFilter
     {
         $builder = $next($request);
 
-        if (request()->has('format') && request()->filled('size')) {
+        if (request()->has('size') && request()->filled('size')) {
             $format = Size::where('slug', request('size'))->first();
             $builder->whereHas('sizes', fn($query) => 
                 $query->where('sizes.id', $format->id));

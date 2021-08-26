@@ -13,8 +13,6 @@ class CategoryFilter
         if (!request()->has('category') && request()->isNotFilled('category')) {
             return $next($request);
         }
-        Log::info(request()->all());
-
         $category = CategoryModel::where('slug', request('category'))->first();
 
         $builder = $next($request);
