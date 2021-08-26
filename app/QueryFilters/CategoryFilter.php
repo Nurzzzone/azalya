@@ -4,6 +4,7 @@ namespace App\QueryFilters;
 
 use Closure;
 use App\Models\Category as CategoryModel;
+use Illuminate\Support\Facades\Log;
 
 class CategoryFilter
 {
@@ -12,6 +13,7 @@ class CategoryFilter
         if (!request()->has('category') && request()->isNotFilled('category')) {
             return $next($request);
         }
+        Log::info(request()->all());
 
         $category = CategoryModel::where('slug', request('category'))->first();
 
