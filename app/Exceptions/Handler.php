@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Exception;
 use Throwable;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -55,6 +56,11 @@ class Handler extends ExceptionHandler
             return $this->handleApiException($request, $exception);
         } else {
             $retval = parent::render($request, $exception);
+        }
+
+        if (!config('app.debug') && $exception instanceof Exception) {
+            $request->session()->flash('error', __('messages.500.body'));
+            return redirect()->back();
         }
 
         return $retval;
