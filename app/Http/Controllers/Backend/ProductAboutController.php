@@ -55,6 +55,6 @@ class ProductAboutController extends Controller
         } catch (\Exception $exception) {
             return $this->flashErrorMessage($request, $exception);
         }
-        return $this->flashSuccessMessage($request, "backend.{$this->route}.index");
+        return $this->flashSuccessMessage($request, "backend.{$this->route}.show");
     }
 }
