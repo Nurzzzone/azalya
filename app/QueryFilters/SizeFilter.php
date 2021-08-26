@@ -11,10 +11,10 @@ class SizeFilter
     {
         $builder = $next($request);
 
-        if (request()->has('size') && request()->filled('size')) {
-            $format = Size::where('slug', request('size'))->first();
+        if (request()->has('size') && !empty(request('size'))) {
+            $sizes = Size::whereIn('slug', request('size'))->pluck('id');
             $builder->whereHas('sizes', fn($query) => 
-                $query->where('sizes.id', $format->id));
+                $query->whereIn('sizes.id', $sizes));
         }
 
         return $builder;

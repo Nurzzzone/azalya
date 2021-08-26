@@ -11,10 +11,10 @@ class FormatFilter
     {
         $builder = $next($request);
 
-        if (request()->has('format') && request()->filled('format')) {
-            $format = Format::where('slug', request('format'))->first();
+        if (request()->has('format') && !empty(request('format'))) {
+            $formats = Format::whereIn('slug', request('format'))->pluck('id');
             $builder->whereHas('formats', fn($query) => 
-                $query->where('formats.id', $format->id));
+                $query->whereIn('formats.id', $formats));
         }
 
         return $builder;

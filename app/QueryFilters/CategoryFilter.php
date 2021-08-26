@@ -4,7 +4,6 @@ namespace App\QueryFilters;
 
 use Closure;
 use App\Models\Category as CategoryModel;
-use Illuminate\Support\Facades\Log;
 
 class CategoryFilter
 {
