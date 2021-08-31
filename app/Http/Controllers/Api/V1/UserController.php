@@ -11,13 +11,13 @@ use App\Http\Resources\ProductCollection;
 use App\Http\Controllers\Api\V1\Controller;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\Order\OrderCollection;
+use App\Models\GeneralSettings;
 
 class UserController extends Controller
 {
     use HasCustomPaginator, HasJsonResponse;
 
     protected const PER_PAGE = 9;
-
 
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -81,5 +81,18 @@ class UserController extends Controller
             return $this->sendErrorMessage();
         }
         return $this->sendSuccessMessage(['user' => $user->first(['name', 'email', 'phone_number', 'address', 'access_token'])]);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function general()
+    {
+        try {
+            $general = GeneralSettings::first(['name', 'image as logo', 'phone_number', 'facebook', 'instagram', 'whatsapp']);
+        } catch (\Exception $e) {
+            return $this->sendErrorMessage();
+        }
+        return $this->sendSuccessMessage(compact('general'));
     }
 }

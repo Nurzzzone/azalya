@@ -36,4 +36,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\\V1'], function() {
     Route::post('/products/get', 'ProductsController@getProductsById');
     Route::post('/products/filter', 'ProductsController@filter');
     Route::post('/checkout', 'OrderController@checkout');
+    Route::get('/general', 'UserController@general');
 });
